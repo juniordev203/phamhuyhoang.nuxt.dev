@@ -1,0 +1,46 @@
+---
+description: Nuxt Content posts collection, frontmatter, and queries
+globs: content/**/*.{md,yml,yaml},content.config.ts,app/pages/posts/**/*.vue,app/components/posts/**/*.vue,app/components/home/PostsSection.vue,app/utils/posts.ts
+alwaysApply: false
+---
+
+# Nuxt Content — Posts
+
+## Collection
+
+- `content.config.ts`: collection `posts` (`type: 'page'`, source `posts/**/*.md`).
+- Schema: `title`, `description`, `date` (string), `tags[]`, `draft` (default `false`), optional `image`.
+
+## Authoring
+
+Path: `content/posts/YYYY/kebab-slug.md`
+
+```md
+---
+title: Clear title
+description: One-sentence summary for cards and SEO.
+date: 2026-07-24
+tags: [nuxt, frontend]
+draft: false
+---
+```
+
+- Public queries always `.where('draft', '=', false)`.
+- Format dates with `formatPostDate` from `~/utils/posts`.
+
+## Querying
+
+```ts
+// list (paginate with POSTS_PER_PAGE / parsePostsPage)
+queryCollection('posts')
+  .where('draft', '=', false)
+  .select('path', 'title', 'description', 'date', 'tags')
+  .order('date', 'DESC').skip(…).limit(…).all()
+
+// detail + surround
+queryCollection('posts').path(route.path).where('draft', '=', false).first()
+queryCollectionItemSurroundings('posts', route.path, { fields: ['title', 'description', 'date'] })
+```
+
+- Wrap in `useAsyncData` with a stable key; render with `<ContentRenderer :value="post" />`.
+- Cards: `<PostsPostCard />`; home preview uses `POSTS_HOME_PREVIEW`.

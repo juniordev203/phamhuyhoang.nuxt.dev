@@ -1,0 +1,38 @@
+---
+description: Static data modules, shared types, and utils conventions
+globs: app/data/**/*.ts,app/types/**/*.ts,app/utils/**/*.ts
+alwaysApply: false
+---
+
+# TypeScript — Data, Types, Utils
+
+## `app/data/`
+
+- Colocate interface + constants in the same file (`Project` in `projects.ts`, `SkillGroup` in `skills.ts`).
+- Site-wide copy/config: `siteConfig` in `site.ts` (`as const` when appropriate).
+- Consumers import from `~/data/<module>` — not from deep relative paths.
+
+```ts
+// ✅
+import { siteConfig } from '~/data/site'
+import type { Project } from '~/data/projects'
+
+// ❌ duplicate ad-hoc project shapes in components
+```
+
+## `app/types/`
+
+- Thin re-exports only (`export type { Project } from '~/data/projects'`).
+- Prefer defining new domain types next to their data module; re-export if widely shared.
+
+## `app/utils/`
+
+- Pure helpers with focused names (`parsePostsPage`, `formatPostDate`, `resolveNavRoute`).
+- Export named constants used by pages (`POSTS_PER_PAGE`, `POSTS_HOME_PREVIEW`).
+- No Vue component logic here — keep SSR-safe and side-effect free.
+
+## Editing content
+
+- New portfolio projects → append to `projects` array (required fields: `slug`, `title`, `company`, `role`, `duration`, `summary`, `contributions`, `tags`, `image`).
+- Skills → `skillGroups` / `skillLinks` in `skills.ts`.
+- Nav/brand strings → `siteConfig` in `site.ts`.

@@ -1,0 +1,44 @@
+---
+description: Monochrome design tokens, Tailwind 4 utilities, Nuxt UI usage
+globs: app/**/*.{vue,css}
+alwaysApply: false
+---
+
+# UI & Tailwind (Monochrome Logic)
+
+Source of truth: `.stitch/DESIGN.md` + tokens in `app/assets/css/main.css`.
+
+## Design pillars
+
+- Strict **monochrome**; hierarchy via type, borders, whitespace — not shadows/gradients.
+- **Sharp corners only** (`rounded-none` / radius tokens are `0`). Never soften with `rounded-lg`/`rounded-full`.
+- Hover elevation: invert colors or use existing `card-hover` (offset + hard shadow), not soft blur shadows.
+- Fonts: **Geist** (UI/headings), **JetBrains Mono** (labels/buttons/code).
+
+## Tokens & utilities (use these)
+
+Colors: `bg-background`, `text-primary`, `text-secondary`, `border-primary`, `bg-surface-container-lowest`, `bg-code-bg`, …
+
+Type: `text-headline-xl|lg|md`, `text-body-lg|md`, `text-label`, `text-code`
+
+Layout: `container-site`, `section-gap`, `gap-gutter`, `pb-section` / `pb-section-mobile`
+
+```vue
+<!-- ✅ -->
+<h1 class="text-headline-xl text-primary uppercase">…</h1>
+<p class="text-body-lg text-secondary">…</p>
+
+<!-- ❌ -->
+<h1 class="text-4xl font-bold text-gray-900">…</h1>
+```
+
+## @nuxt/ui
+
+- Wrap app in `<UApp>` (already in `app.vue`).
+- Prefer **project components** (`UiAppButton`, `UiAppTag`, `UiProjectCard`, …) over stock `UButton`/`UCard` for branded UI.
+- `useToast()` is fine for errors (see `ContactForm`).
+
+## Theme
+
+- `colorMode`: system preference, `classSuffix: ''` (`.dark` on root).
+- New colors go through CSS vars (`--p-*`) + `@theme` mapping — don't hardcode hex in Vue unless matching an existing token.

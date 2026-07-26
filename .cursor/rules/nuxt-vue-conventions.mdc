@@ -1,0 +1,46 @@
+---
+description: Nuxt/Vue SFC patterns, auto-imports, pages and layouts
+globs: app/**/*.{vue,ts}
+alwaysApply: false
+---
+
+# Nuxt / Vue Conventions
+
+## SFC style
+
+- Always `<script setup lang="ts">`.
+- Prefer Nuxt auto-imports (`useRoute`, `useAsyncData`, `navigateTo`, `useSeoMeta`, `createError`).
+- Explicitly import from `~/data/*` and `~/utils/*` (project does this consistently).
+
+## Component naming (path-prefix)
+
+Folder under `app/components/` becomes the prefix:
+
+| File | Usage in template |
+|------|-------------------|
+| `home/HeroSection.vue` | `<HomeHeroSection />` |
+| `ui/AppButton.vue` | `<UiAppButton />` |
+| `layout/AppHeader.vue` | `<LayoutAppHeader />` |
+| `posts/PostCard.vue` | `<PostsPostCard />` |
+
+Root-level components stay unprefixed: `ContactForm.vue` → `<ContactForm />`.
+
+```vue
+<!-- ✅ -->
+<UiAppButton to="/work">View Work</UiAppButton>
+
+<!-- ❌ Don't invent alternate names -->
+<AppButton to="/work">View Work</AppButton>
+```
+
+## Pages & layouts
+
+- Pages live in `app/pages/`; keep route SFCs thin — compose section components.
+- Set SEO with `useSeoMeta` using `siteConfig` from `~/data/site`.
+- Layouts: `default` (header/main/footer + `container-site`); `contact` when needed via `definePageMeta`.
+- Images: prefer `<NuxtImg>`; icons: Material Symbols (`material-symbols-outlined`).
+
+## Reactivity
+
+- `ref` / `reactive` / `computed` as usual; `defineModel` for two-way props (see `ContactSuccessModal`).
+- Client-only DOM: guard with `import.meta.client`.

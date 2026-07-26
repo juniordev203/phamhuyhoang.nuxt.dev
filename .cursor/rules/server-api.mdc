@@ -1,0 +1,46 @@
+---
+description: Nitro API handlers — Zod validation, Resend, errors
+globs: server/**/*
+alwaysApply: false
+---
+
+# Server API (Nitro)
+
+## Handler shape
+
+- File naming: `server/api/<name>.<method>.ts` (e.g. `contact.post.ts` → `POST /api/contact`).
+- Export `defineEventHandler`; read body with `readBody(event)`.
+- Secrets via `useRuntimeConfig()` (`resendApiKey`, `resendFrom`, `contactEmail`) — never commit keys.
+
+## Validation (Zod)
+
+```ts
+// ✅
+const parsed = contactSchema.safeParse(body)
+if (!parsed.success) {
+  throw createError({
+    statusCode: 400,
+    statusMessage: 'Invalid form data',
+    data: parsed.error.flatten()
+  })
+}
+```
+
+- Trim/max-length strings; return flattened Zod errors in `data`.
+- Missing config → `500`; upstream email failure → `502`.
+
+## Contact / Resend
+
+- Mirror client fields: `name`, `email`, `message`.
+- Escape user HTML before embedding (`escapeHtml`); set `replyTo` to sender email.
+- Success response: `{ ok: true }`.
+
+## Don't
+
+```ts
+// ❌ swallow errors or return 200 on failure
+return { ok: false, error: String(e) }
+
+// ❌ trust body without schema
+const { email } = await readBody(event)
+```

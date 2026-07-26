@@ -1,0 +1,38 @@
+---
+description: ARCHITECT.DEV portfolio — stack, layout, and tooling
+alwaysApply: true
+---
+
+# Project Overview
+
+Personal portfolio site (**ARCHITECT.DEV**) for Pham Huy Hoang — monochrome, Swiss/architectural minimal UI.
+
+## Stack
+
+- **Nuxt 4** (`future.compatibilityVersion: 4`) with `app/` directory
+- **Vue 3** + **TypeScript** + **vue-router**
+- **Tailwind CSS 4** + **@nuxt/ui** 4 (app shell / toast; custom UI preferred)
+- **@nuxt/content** 3 — blog in `content/posts/`
+- **@nuxt/image**, **@nuxt/eslint**, **@nuxtjs/google-fonts**
+- **Zod** + **Resend** for contact API
+- Package manager: **pnpm** only (`pnpm dev|build|generate|preview`)
+
+## Directory map
+
+| Path | Role |
+|------|------|
+| `app/pages/` | Routes: `/`, `/work`, `/contact`, `/posts` |
+| `app/components/{home,layout,ui,posts}/` | Feature-grouped SFCs |
+| `app/layouts/` | `default`, `contact` |
+| `app/data/` | Static site/project/skill content + types |
+| `app/utils/` | Shared helpers (`posts`, `nav`) |
+| `app/assets/css/main.css` | Design tokens & utilities |
+| `content/posts/` | Markdown posts |
+| `server/api/` | Nitro handlers |
+| `.stitch/DESIGN.md` | Visual system source of truth |
+
+## Agent defaults
+
+- Match existing patterns; prefer editing data/components over inventing new abstractions.
+- Do not add cards/shadows/rounded UI that fights the sharp monochrome system.
+- Secrets stay in `runtimeConfig` / env (`resendApiKey`, etc.) — never hardcode API keys.
