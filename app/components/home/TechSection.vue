@@ -8,7 +8,7 @@ import { initSnippet, skillGroups } from '~/data/skills'
       <h2 class="text-headline-md text-primary">
         Technical Arsenal
       </h2>
-      <span class="text-label text-secondary">001 // STACK</span>
+      <span class="text-label text-secondary">002 // STACK</span>
     </div>
 
     <div class="grid grid-cols-2 gap-gutter md:grid-cols-4">

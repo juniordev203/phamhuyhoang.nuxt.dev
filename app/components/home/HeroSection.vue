@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { siteConfig } from "~/data/site";
+import { siteConfig } from '~/data/site'
 </script>
 
 <template>
@@ -17,8 +17,10 @@ import { siteConfig } from "~/data/site";
         {{ siteConfig.tagline }}
       </p>
       <div class="flex flex-wrap gap-4">
-        <UiAppButton to="/work"> View Projects </UiAppButton>
-        <UiAppButton to="/contact" variant="secondary">
+        <UiAppButton :to="{ path: '/', hash: '#work' }">
+          View Projects
+        </UiAppButton>
+        <UiAppButton :to="{ path: '/', hash: '#contact' }" variant="secondary">
           Get in touch
         </UiAppButton>
       </div>

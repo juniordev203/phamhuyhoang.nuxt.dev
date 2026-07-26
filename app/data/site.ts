@@ -40,8 +40,9 @@ export const siteConfig = {
     }
   },
   nav: [
-    { label: 'Work', to: '/work' },
-    { label: 'Tech', to: '/#tech' as const },
-    { label: 'Contact', to: '/contact' }
+    { label: 'Work', to: '/#work' },
+    { label: 'Tech', to: '/#tech' },
+    { label: 'Posts', to: '/#posts' },
+    { label: 'Contact', to: '/#contact' }
   ]
 } as const

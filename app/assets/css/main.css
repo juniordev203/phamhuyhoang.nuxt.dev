@@ -228,3 +228,62 @@
     box-shadow: 4px 4px 0 0 var(--p-primary);
   }
 }
+
+@layer components {
+  .post-prose {
+    @apply text-body-md text-on-surface;
+  }
+
+  .post-prose :where(h2) {
+    @apply mt-10 mb-4 text-headline-md text-primary;
+  }
+
+  .post-prose :where(h3) {
+    @apply mt-8 mb-3 text-headline-md text-primary;
+  }
+
+  .post-prose :where(p) {
+    @apply mb-4 text-body-md text-secondary;
+  }
+
+  .post-prose :where(ul, ol) {
+    @apply mb-4 list-outside space-y-2 pl-5 text-body-md text-secondary;
+  }
+
+  .post-prose :where(ul) {
+    list-style-type: disc;
+  }
+
+  .post-prose :where(ol) {
+    list-style-type: decimal;
+  }
+
+  .post-prose :where(a) {
+    @apply text-primary underline underline-offset-4;
+  }
+
+  .post-prose :where(strong) {
+    @apply font-semibold text-primary;
+  }
+
+  .post-prose :where(code) {
+    @apply border border-outline-variant bg-code-bg px-1 py-0.5 text-code text-primary;
+  }
+
+  .post-prose :where(pre) {
+    @apply mb-4 overflow-x-auto border border-primary bg-code-bg p-4 text-code text-primary;
+  }
+
+  .post-prose :where(pre code) {
+    @apply border-0 bg-transparent p-0;
+  }
+
+  .post-prose :where(blockquote) {
+    @apply mb-4 border-l-2 border-primary pl-4 text-body-md text-secondary italic;
+  }
+
+  .post-prose :where(hr) {
+    @apply my-8 border-0 border-t border-outline-variant;
+  }
+}
+

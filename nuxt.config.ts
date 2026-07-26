@@ -7,7 +7,8 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/image',
     '@nuxt/ui',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxt/content'
   ],
 
   css: ['~/assets/css/main.css'],
@@ -59,6 +60,13 @@ export default defineNuxtConfig({
     preference: 'system',
     fallback: 'light',
     classSuffix: ''
+  },
+
+  content: {
+    experimental: {
+      // Node 22.5+ / Vercel-friendly; avoids native better-sqlite3 builds
+      sqliteConnector: 'native'
+    }
   },
 
   future: {

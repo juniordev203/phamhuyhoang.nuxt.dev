@@ -6,9 +6,17 @@ const route = useRoute()
 const mobileOpen = ref(false)
 
 const isActive = (to: string) => {
+  if (to === '/#posts') {
+    return (
+      route.path.startsWith('/posts')
+      || (route.path === '/' && route.hash === '#posts')
+    )
+  }
+
   if (to.startsWith('/#')) {
     return route.path === '/' && route.hash === to.slice(1)
   }
+
   return route.path === to
 }
 

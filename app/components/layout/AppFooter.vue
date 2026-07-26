@@ -1,14 +1,5 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
-
-withDefaults(
-  defineProps<{
-    variant?: 'default' | 'contact'
-  }>(),
-  {
-    variant: 'default'
-  }
-)
 </script>
 
 <template>
@@ -16,15 +7,7 @@ withDefaults(
     <div
       class="container-site flex w-full flex-col items-center justify-between gap-4 py-12 md:flex-row"
     >
-      <template v-if="variant === 'contact'">
-        <div class="text-label font-bold text-primary">
-          {{ siteConfig.name }}
-        </div>
-        <div class="text-center text-body-md text-secondary md:text-left">
-          {{ siteConfig.copyright }}
-        </div>
-      </template>
-      <span v-else class="text-label font-bold text-primary">
+      <span class="text-label font-bold text-primary">
         {{ siteConfig.copyright }}
       </span>
 

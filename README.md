@@ -32,4 +32,8 @@ Locally preview production build:
 pnpm preview
 ```
 
+## Writing posts
+
+Add Markdown files under `content/posts/YYYY/your-slug.md`. See `content/README.md` for frontmatter and conventions.
+
 Check out the [Nuxt deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import type { RouteLocationRaw } from 'vue-router'
+
 const props = withDefaults(
   defineProps<{
-    to?: string
+    to?: RouteLocationRaw
     href?: string
     variant?: 'primary' | 'secondary'
     type?: 'button' | 'submit' | 'reset'
