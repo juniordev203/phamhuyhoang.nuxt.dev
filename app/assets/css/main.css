@@ -2,33 +2,33 @@
 @import "@nuxt/ui";
 @import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap");
 
-@theme static {
+@theme {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-background: #f9f9f9;
-  --color-surface: #f9f9f9;
-  --color-surface-dim: #dadada;
-  --color-surface-bright: #f9f9f9;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f3f3f4;
-  --color-surface-container: #eeeeee;
-  --color-surface-container-high: #e8e8e8;
-  --color-surface-container-highest: #e2e2e2;
-  --color-surface-variant: #e2e2e2;
-  --color-on-background: #1a1c1c;
-  --color-on-surface: #1a1c1c;
-  --color-on-surface-variant: #4c4546;
-  --color-primary: #000000;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #1b1b1b;
-  --color-secondary: #5e5e5e;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #e1dfdf;
-  --color-tertiary: #000000;
-  --color-outline: #7e7576;
-  --color-outline-variant: #cfc4c5;
-  --color-code-bg: #f5f5f5;
+  --color-background: var(--p-background);
+  --color-surface: var(--p-surface);
+  --color-surface-dim: var(--p-surface-dim);
+  --color-surface-bright: var(--p-surface-bright);
+  --color-surface-container-lowest: var(--p-surface-container-lowest);
+  --color-surface-container-low: var(--p-surface-container-low);
+  --color-surface-container: var(--p-surface-container);
+  --color-surface-container-high: var(--p-surface-container-high);
+  --color-surface-container-highest: var(--p-surface-container-highest);
+  --color-surface-variant: var(--p-surface-variant);
+  --color-on-background: var(--p-on-background);
+  --color-on-surface: var(--p-on-surface);
+  --color-on-surface-variant: var(--p-on-surface-variant);
+  --color-primary: var(--p-primary);
+  --color-on-primary: var(--p-on-primary);
+  --color-primary-container: var(--p-primary-container);
+  --color-secondary: var(--p-secondary);
+  --color-on-secondary: var(--p-on-secondary);
+  --color-secondary-container: var(--p-secondary-container);
+  --color-tertiary: var(--p-tertiary);
+  --color-outline: var(--p-outline);
+  --color-outline-variant: var(--p-outline-variant);
+  --color-code-bg: var(--p-code-bg);
 
   --spacing-unit: 4px;
   --spacing-gutter: 24px;
@@ -49,6 +49,62 @@
 }
 
 @layer base {
+  :root,
+  .light {
+    --p-background: #f9f9f9;
+    --p-surface: #f9f9f9;
+    --p-surface-dim: #dadada;
+    --p-surface-bright: #f9f9f9;
+    --p-surface-container-lowest: #ffffff;
+    --p-surface-container-low: #f3f3f4;
+    --p-surface-container: #eeeeee;
+    --p-surface-container-high: #e8e8e8;
+    --p-surface-container-highest: #e2e2e2;
+    --p-surface-variant: #e2e2e2;
+    --p-on-background: #1a1c1c;
+    --p-on-surface: #1a1c1c;
+    --p-on-surface-variant: #4c4546;
+    --p-primary: #000000;
+    --p-on-primary: #ffffff;
+    --p-primary-container: #1b1b1b;
+    --p-secondary: #5e5e5e;
+    --p-on-secondary: #ffffff;
+    --p-secondary-container: #e1dfdf;
+    --p-tertiary: #000000;
+    --p-outline: #7e7576;
+    --p-outline-variant: #cfc4c5;
+    --p-code-bg: #f5f5f5;
+    --p-grid-line: #e2e2e2;
+  }
+
+  .dark {
+    --p-background: #0c0c0c;
+    --p-surface: #0c0c0c;
+    --p-surface-dim: #1a1a1a;
+    --p-surface-bright: #1f1f1f;
+    --p-surface-container-lowest: #141414;
+    --p-surface-container-low: #1a1a1a;
+    --p-surface-container: #1f1f1f;
+    --p-surface-container-high: #262626;
+    --p-surface-container-highest: #2e2e2e;
+    --p-surface-variant: #2e2e2e;
+    --p-on-background: #f2f2f2;
+    --p-on-surface: #f2f2f2;
+    --p-on-surface-variant: #b5b0b1;
+    --p-primary: #f5f5f5;
+    --p-on-primary: #0c0c0c;
+    --p-primary-container: #e8e8e8;
+    --p-secondary: #a3a3a3;
+    --p-on-secondary: #0c0c0c;
+    --p-secondary-container: #2a2a2a;
+    --p-tertiary: #f5f5f5;
+    --p-outline: #8a8485;
+    --p-outline-variant: #3d3839;
+    --p-code-bg: #161616;
+    --p-grid-line: #262626;
+    color-scheme: dark;
+  }
+
   html {
     scroll-behavior: smooth;
   }
@@ -56,8 +112,8 @@
   body {
     @apply bg-background text-on-background font-sans antialiased;
     background-image:
-      linear-gradient(to right, #e2e2e2 1px, transparent 1px),
-      linear-gradient(to bottom, #e2e2e2 1px, transparent 1px);
+      linear-gradient(to right, var(--p-grid-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--p-grid-line) 1px, transparent 1px);
     background-size: 24px 24px;
     min-height: 100vh;
   }
@@ -169,6 +225,6 @@
 
   &:hover {
     transform: translate(-4px, -4px);
-    box-shadow: 4px 4px 0 0 #000;
+    box-shadow: 4px 4px 0 0 var(--p-primary);
   }
 }

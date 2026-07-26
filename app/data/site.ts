@@ -11,7 +11,6 @@ export const siteConfig = {
   ],
   version: 'v2.4.1',
   copyright: '© 2026 ARCHITECT.DEV — ENGINEERED FOR PRECISION',
-  resumeUrl: '#',
   email: 'huyhoangpham8460@gmail.com',
   phone: '0367 435 069',
   education: {

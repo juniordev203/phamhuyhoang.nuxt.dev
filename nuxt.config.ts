@@ -49,8 +49,16 @@ export default defineNuxtConfig({
     }
   },
 
-  ui: {
-    colorMode: false
+  runtimeConfig: {
+    resendApiKey: '',
+    resendFrom: 'ARCHITECT.DEV <onboarding@resend.dev>',
+    contactEmail: 'huyhoangpham8460@gmail.com'
+  },
+
+  colorMode: {
+    preference: 'system',
+    fallback: 'light',
+    classSuffix: ''
   },
 
   future: {

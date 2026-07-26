@@ -1,29 +1,41 @@
 <script setup lang="ts">
-import { siteConfig } from '~/data/site'
-
 const form = reactive({
   name: '',
   email: '',
   message: ''
 })
 
-const submitted = ref(false)
+const status = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
+const errorMessage = ref('')
 
-const onSubmit = () => {
-  const subject = encodeURIComponent(
-    `ARCHITECT.DEV inquiry from ${form.name}`
-  )
-  const body = encodeURIComponent(
-    [
-      `Name: ${form.name}`,
-      `Email: ${form.email}`,
-      '',
-      form.message
-    ].join('\n')
-  )
+const onSubmit = async () => {
+  if (status.value === 'loading') return
 
-  window.location.href = `mailto:${siteConfig.email}?subject=${subject}&body=${body}`
-  submitted.value = true
+  status.value = 'loading'
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/contact', {
+      method: 'POST',
+      body: {
+        name: form.name,
+        email: form.email,
+        message: form.message
+      }
+    })
+
+    status.value = 'success'
+    form.name = ''
+    form.email = ''
+    form.message = ''
+  } catch (error: unknown) {
+    status.value = 'error'
+    const err = error as { data?: { statusMessage?: string }, statusMessage?: string }
+    errorMessage.value
+      = err?.data?.statusMessage
+        || err?.statusMessage
+        || 'Failed to send message. Please try again or email me directly.'
+  }
 }
 </script>
 
@@ -42,7 +54,9 @@ const onSubmit = () => {
           name="name"
           placeholder="Your name"
           required
-          class="rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary"
+          autocomplete="name"
+          :disabled="status === 'loading'"
+          class="rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary disabled:opacity-60"
         >
       </div>
       <div class="flex flex-col">
@@ -54,7 +68,9 @@ const onSubmit = () => {
           name="email"
           placeholder="you@company.com"
           required
-          class="rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary"
+          autocomplete="email"
+          :disabled="status === 'loading'"
+          class="rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary disabled:opacity-60"
         >
       </div>
     </div>
@@ -68,19 +84,28 @@ const onSubmit = () => {
         rows="4"
         placeholder="Share the role, project idea, or how I can help..."
         required
-        class="resize-none rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary"
+        :disabled="status === 'loading'"
+        class="resize-none rounded-none border-0 border-b border-primary bg-transparent p-2 text-code text-primary outline-none transition-all placeholder:text-outline focus:border-b-2 focus:border-primary disabled:opacity-60"
       />
     </div>
 
-    <UiAppButton type="submit" block>
-      SEND MESSAGE
+    <UiAppButton type="submit" block :disabled="status === 'loading'">
+      {{ status === 'loading' ? 'SENDING…' : 'SEND MESSAGE' }}
     </UiAppButton>
 
     <p
-      v-if="submitted"
+      v-if="status === 'success'"
       class="mt-4 text-center text-label text-secondary"
+      role="status"
     >
-      Opening your email client to send the message…
+      Message sent. I will get back to you soon.
+    </p>
+    <p
+      v-else-if="status === 'error'"
+      class="mt-4 text-center text-label text-secondary"
+      role="alert"
+    >
+      {{ errorMessage }}
     </p>
   </form>
 </template>

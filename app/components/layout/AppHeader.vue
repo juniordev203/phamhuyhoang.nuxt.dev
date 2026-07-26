@@ -48,12 +48,9 @@ watch(
         </NuxtLink>
       </nav>
 
-      <a
-        :href="siteConfig.resumeUrl"
-        class="hidden cursor-pointer border border-primary bg-primary px-6 py-3 text-label text-on-primary transition-colors duration-200 hover:bg-background hover:text-primary md:inline-flex"
-      >
-        Resume
-      </a>
+      <div class="hidden md:block">
+        <LayoutThemeToggle />
+      </div>
 
       <button
         type="button"
@@ -79,9 +76,9 @@ watch(
       >
         {{ item.label }}
       </NuxtLink>
-      <a :href="siteConfig.resumeUrl" class="text-label text-primary">
-        Resume
-      </a>
+      <div>
+        <LayoutThemeToggle />
+      </div>
     </div>
   </header>
 </template>
