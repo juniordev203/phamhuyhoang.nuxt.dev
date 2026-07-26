@@ -1,0 +1,52 @@
+{
+  "screens": [
+    {
+      "name": "projects/2407687928339507785/screens/07e792271a014e4baa883850d9646b3b",
+      "title": "Home - Frontend Portfolio",
+      "screenshot": {
+        "name": "projects/2407687928339507785/files/15062806845159991707",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLtrXY93KGAzS16A1WsdPR9sw9ABxN4sJAI2m_K9qYd1uf2qn3M6wFG8hLbF1hZ77lXqgDDI5rZoluwrVWieww-vUxoL6R4PWHfdW2oqDKHDm8bsN8fJKDuxOEhQnJ3BNt3pZ-8Gs6qvi_cKqmrrbJtdQtvGZPyvIffmOz44tGmtCCoZ1eh4tSdW67W9h1OVVH2OnuxFvrJoUoBIlApGYvx-GGwTZyJIPYnLoEczQ-Gy3ugXMGmDlOImh9I"
+      },
+      "htmlCode": {
+        "name": "projects/2407687928339507785/files/15168545919294897429",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzAwMDY1NzdlZDBhYjM0MTIwN2M0ZTczMGE3MjY1NjViEgsSBxDszOyx9wEYAZIBIwoKcHJvamVjdF9pZBIVQhMyNDA3Njg3OTI4MzM5NTA3Nzg1&filename=&opi=89354086",
+        "mimeType": "text/html"
+      },
+      "width": "2560",
+      "height": "3344",
+      "deviceType": "DESKTOP"
+    },
+    {
+      "name": "projects/2407687928339507785/screens/eb685f484ec94827bb30e96b328a541e",
+      "title": "Contact - Frontend Portfolio",
+      "screenshot": {
+        "name": "projects/2407687928339507785/files/8e6e5d634f814a78b0c767e3a4cfebd7",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLuHulIhqvf2lqaFSqUmqJo_vnlyd3cNWW_BNIrk762t2XEMKdFQmP1_1ntQ2UmPAgkFzW2QggjvrX0nKALltqLeSJbxcSSuak0E-YshGRKVQbpCSiFnJjIue63NV9W5WD27UGIXDBtfS1TUGPQESkGCBLz9Ip609CGyL91zuLpB-470FTUDfq7AVOOGbDg6CFLkPNgQfHxFuz8VoMO8llzrUS-97dX2qCZ3_92xQLU2014ASsHMvicgcQ"
+      },
+      "htmlCode": {
+        "name": "projects/2407687928339507785/files/dba779a81ff043a69cedf3e51ada43b7",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sX2E2NTFkNzZjN2RjMzQ0OTg5M2IxNWFlMDhhODMzYjRkEgsSBxDszOyx9wEYAZIBIwoKcHJvamVjdF9pZBIVQhMyNDA3Njg3OTI4MzM5NTA3Nzg1&filename=&opi=89354086",
+        "mimeType": "text/html"
+      },
+      "width": "2560",
+      "height": "2868",
+      "deviceType": "DESKTOP"
+    },
+    {
+      "name": "projects/2407687928339507785/screens/f6902ecf98d944a69b1f437ecb5d1795",
+      "title": "Projects - Frontend Portfolio",
+      "screenshot": {
+        "name": "projects/2407687928339507785/files/7bdfd14c829a40109075b2bba343cac9",
+        "downloadUrl": "https://lh3.googleusercontent.com/aida/AP1WRLv8Ddbw8BI50X8a-0_t_9X7NFJAxrssJpOmqM3Q3OVVhllLDCJgeSp1LxtZwmlcMHqFv2e-sXUOmZEnTefW_Vt_w45eRXV55P3Yswm-7pGqrTvsJY4Z9zsQGBIT4Vcb5uEq5_xR_kopbFapJQ07KdxbJvvl-4CXGsSqjz1B0o7z9o-yCCyJL0uEbkRDU8B4Uc9XC99tx1T_seUyMQ4oOtos9AwF-4m9gpYvAydbbB8mP2IjsZkLQHJuH1o"
+      },
+      "htmlCode": {
+        "name": "projects/2407687928339507785/files/6fd9fd452f584ccd81c1fe0fde3d6870",
+        "downloadUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ7Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpaCiVodG1sXzFkZGNiOGRlMzA4YjQ5YmNhZDFjMGI3YTkzZDE3M2MzEgsSBxDszOyx9wEYAZIBIwoKcHJvamVjdF9pZBIVQhMyNDA3Njg3OTI4MzM5NTA3Nzg1&filename=&opi=89354086",
+        "mimeType": "text/html"
+      },
+      "width": "2560",
+      "height": "4044",
+      "deviceType": "DESKTOP"
+    }
+  ]
+}

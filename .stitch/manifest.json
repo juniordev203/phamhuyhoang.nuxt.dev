@@ -1,0 +1,44 @@
+{
+  "projectId": "2407687928339507785",
+  "screens": [
+    {
+      "id": "07e792271a014e4baa883850d9646b3b",
+      "label": "Home - Frontend Portfolio",
+      "name": "projects/2407687928339507785/screens/07e792271a014e4baa883850d9646b3b",
+      "safe": "home---frontend-portfolio",
+      "title": "Home - Frontend Portfolio",
+      "width": "2560",
+      "height": "3344"
+    },
+    {
+      "id": "eb685f484ec94827bb30e96b328a541e",
+      "label": "Contact - Frontend Portfolio",
+      "name": "projects/2407687928339507785/screens/eb685f484ec94827bb30e96b328a541e",
+      "safe": "contact---frontend-portfolio",
+      "title": "Contact - Frontend Portfolio",
+      "width": "2560",
+      "height": "2868"
+    },
+    {
+      "id": "f6902ecf98d944a69b1f437ecb5d1795",
+      "label": "Projects - Frontend Portfolio",
+      "name": "projects/2407687928339507785/screens/f6902ecf98d944a69b1f437ecb5d1795",
+      "safe": "projects---frontend-portfolio",
+      "title": "Projects - Frontend Portfolio",
+      "width": "2560",
+      "height": "4044"
+    },
+    {
+      "id": "6ad1df3a4e684248b286474f92dccf49",
+      "label": "Optimized Projects - Frontend Portfolio",
+      "name": "projects/2407687928339507785/screens/6ad1df3a4e684248b286474f92dccf49",
+      "safe": "optimized-projects---frontend-portfolio"
+    },
+    {
+      "id": "b284868d35294d6bbd580f1cf7036438",
+      "label": "Optimized Contact - Frontend Portfolio",
+      "name": "projects/2407687928339507785/screens/b284868d35294d6bbd580f1cf7036438",
+      "safe": "optimized-contact---frontend-portfolio"
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Work - ARCHITECT.DEV</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#f9f9f9",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-tertiary-fixed-variant": "#454747",
+                        "surface-container-high": "#e8e8e8",
+                        "on-background": "#1a1c1c",
+                        "primary-fixed": "#e2e2e2",
+                        "outline": "#7e7576",
+                        "primary-container": "#1b1b1b",
+                        "primary": "#000000",
+                        "secondary-container": "#e1dfdf",
+                        "on-tertiary-container": "#838484",
+                        "secondary": "#5e5e5e",
+                        "on-primary-container": "#848484",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e4e2e2",
+                        "error-container": "#ffdad6",
+                        "inverse-surface": "#2f3131",
+                        "tertiary-fixed": "#e2e2e2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-container": "#626262",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f9f9f9",
+                        "surface-dim": "#dadada",
+                        "secondary-fixed-dim": "#c7c6c6",
+                        "inverse-on-surface": "#f0f1f1",
+                        "on-surface-variant": "#4c4546",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-container": "#eeeeee",
+                        "on-surface": "#1a1c1c",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#474747",
+                        "on-secondary-fixed-variant": "#464747",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#1b1b1b",
+                        "surface-tint": "#5e5e5e",
+                        "surface-bright": "#f9f9f9",
+                        "on-tertiary-fixed": "#1a1c1c",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#c6c6c7",
+                        "tertiary-container": "#1a1c1c",
+                        "primary-fixed-dim": "#c6c6c6",
+                        "surface-variant": "#e2e2e2",
+                        "inverse-primary": "#c6c6c6",
+                        "tertiary": "#000000",
+                        "surface-container-low": "#f3f3f4",
+                        "outline-variant": "#cfc4c5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "section-gap": "160px",
+                        "margin-mobile": "20px",
+                        "container-max": "1200px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Geist"],
+                        "body-md": ["Geist"],
+                        "body-lg": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-xl": ["Geist"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-xl-mobile": ["Geist"],
+                        "code-md": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "headline-xl": ["80px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "label-sm": ["12px", { "lineHeight": "1", "fontWeight": "500" }],
+                        "headline-xl-mobile": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700" }],
+                        "code-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .grid-bg {
+            background-size: 24px 24px;
+            background-image: 
+                linear-gradient(to right, rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0,0,0,0.05) 1px, transparent 1px);
+        }
+        
+        .card-hover:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+            transition: all 0.2s ease;
+        }
+        .card-hover {
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen grid-bg font-body-md pt-[80px]">
+<!-- TopNavBar -->
+<nav class="bg-background dark:bg-background text-primary dark:text-on-background border-b border-primary dark:border-outline-variant fixed top-0 left-0 w-full z-50 flex justify-between items-center px-gutter py-4 max-w-container-max mx-auto bg-background/80 backdrop-blur-sm">
+<div class="text-headline-md font-headline-md font-bold tracking-tighter text-primary dark:text-on-background">
+            ARCHITECT.DEV
+        </div>
+<div class="hidden md:flex gap-8">
+<a class="text-primary dark:text-on-background underline decoration-2 underline-offset-8 text-label-sm font-label-sm hover:line-through transition-all duration-200 cursor-pointer active:opacity-70" href="#">Work</a>
+<a class="text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-on-background text-label-sm font-label-sm hover:line-through transition-all duration-200 cursor-pointer active:opacity-70" href="#">Tech</a>
+<a class="text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-on-background text-label-sm font-label-sm hover:line-through transition-all duration-200 cursor-pointer active:opacity-70" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 text-label-sm font-label-sm border border-primary hover:bg-surface-container-lowest hover:text-primary transition-colors cursor-pointer active:opacity-70 hidden md:block">
+            Resume
+        </button>
+<div class="md:hidden">
+<span class="material-symbols-outlined cursor-pointer">menu</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="max-w-container-max mx-auto px-gutter py-section-gap md:py-section-gap pt-[120px]">
+<header class="mb-24">
+<h1 class="text-headline-xl-mobile md:text-headline-xl font-headline-xl-mobile md:font-headline-xl mb-6 uppercase">Selected<br/>Works</h1>
+<p class="text-body-lg font-body-lg max-w-2xl text-secondary">
+                A collection of engineering endeavors focusing on performance, robust architecture, and pixel-perfect execution.
+            </p>
+</header>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 md:gap-gutter">
+<!-- Project Card 1 -->
+<article class="bg-surface-container-lowest border border-primary card-hover flex flex-col group cursor-pointer">
+<div class="h-64 border-b border-primary relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A highly complex data visualization dashboard UI shown in an isometric perspective. The design uses stark black and white contrasts with precise grid lines and tiny, crisp JetBrains Mono typographic labels. It looks like a high-end financial or architectural software interface. Professional, crisp, minimalist lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9brTjzU2h2dZ_RE9XELbOzlHYdd9tBpkuBNnw_81JUZ9ZT8biJpj9AwgZcSTk9Dek7ZK26WBOUxKdD0x37U0k_t-4REfIP4IXvbwDUIKmOTNeY4C3PUA7r7IpTUjECJ6K4-v6KdYR6iWLSQ9McJ_pmo4FSD8EiLEh4uGlNtHZLl-hCLsVGEE2mVmS4tbw5BwxtNb3CZoiLYgtZmI8RMEHE-w2ocdFr0WmCK7ot3UNwEJ00sD6t5E_WTv2Tw0-GmS1VOq0ukckO90"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between"><div><div class="flex justify-between items-start mb-4"><h2 class="text-headline-md font-headline-md uppercase tracking-tight">FinTech Data Platform</h2><span class="material-symbols-outlined text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">arrow_outward</span></div><p class="text-body-md font-body-md text-secondary mb-6">High-throughput real-time trading engine.<br/><br/><strong>Challenge:</strong> Severe DOM reflow under volatile market data.<br/><strong>Result:</strong> Sub-500ms data ingestion and 60fps rendering using Vue and custom WebGL layers.</p></div><div class="flex flex-wrap gap-2 mt-auto"><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">Vue 3</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">TypeScript</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">WebGL</span></div></div>
+</article>
+<!-- Project Card 2 -->
+<article class="bg-surface-container-lowest border border-primary card-hover flex flex-col group cursor-pointer">
+<div class="h-64 border-b border-primary relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A minimalist e-commerce storefront UI featuring abstract geometric shapes representing products. The layout is strictly grid-based, using only black lines and stark white space. A sophisticated, brutalist approach to retail design, extremely clean and precise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0kIXd_u0kxkyjbBV7PbD4mw9sfvWbm4Zkp-hKgqKEmGrn8dHYxSjRG5FxPsb4-_CErJLggt0bFT227KkXjt44uSCZFklGTU2YLFqLbp02OHOTCktaYN8K-MGptDxTFbF2sCUwxSUCQttDvOluMSrME7WOC2jUdJCkl2p_8iDekOydeNHkNUzjfwJ-CuFD8S3_OSYIICvLAga-U7rTYe5PqJht474jQe59XvyseGRWWA6O3FVz4OxyPn6TH6DgJPshGIQdPIWO8Hw"/>
+</div>
+<div class="p-6 flex flex-col flex-grow justify-between"><div><div class="flex justify-between items-start mb-4"><h2 class="text-headline-md font-headline-md uppercase tracking-tight">Headless Commerce Shell</h2><span class="material-symbols-outlined text-primary group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">arrow_outward</span></div><p class="text-body-md font-body-md text-secondary mb-6">Performance-first storefront for high-end retail.<br/><br/><strong>Challenge:</strong> High TTFB in global markets.<br/><strong>Result:</strong> Leveraged Nuxt Hub for edge-caching and PPR, reducing load times by 80%.</p></div><div class="flex flex-wrap gap-2 mt-auto"><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">Nuxt 3</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">GraphQL</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">Edge</span></div></div>
+</article>
+<!-- Project Card 3 -->
+<article class="bg-surface-container-lowest border border-primary card-hover flex flex-col group cursor-pointer lg:col-span-2">
+<div class="h-80 border-b border-primary relative overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="A wide panoramic view of a complex node-based visual programming interface. Stark black nodes with sharp corners connected by rigid, orthogonal lines on a pristine white grid background. High-contrast, technical, and brutally functional design aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfYu7ZApV1ihCG0CeWAEnxuZsm60SjUP0FTjITYy-VJFAlUN0MJMZ-tqbZmoLcDO825vu5DM21cWD5yHfJK7OSGDF5QMmEIq5FDCmj58hIUWurwRTOpJQf-rqrCjJi-3akMzIHO1hrNAc1KFuhow0DpXjmzr0yTTW7X-Zkf8zmt8lCcFxDzuPDHQQjmieeRVamibMwSIOR_do81cTiUjnpH7Qok2qnf-rt8QPUHolUzhSDdSQvZ341-9i4ExnMEX2d637xrJba7f8"/>
+</div>
+<div class="p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-8"><div class="max-w-2xl"><div class="flex items-center gap-4 mb-2"><h2 class="text-headline-lg font-headline-lg uppercase tracking-tight">Quantum Node Engine</h2></div><p class="text-body-lg font-body-lg text-secondary">Browser-based visual programming environment.<br/><br/><strong>Challenge:</strong> Managing thousands of interconnected nodes.<br/><strong>Result:</strong> Eliminated DOM overhead via Canvas API, achieving flawless 60fps performance.</p></div><div class="flex flex-col items-end gap-4 shrink-0"><span class="material-symbols-outlined text-primary text-4xl group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform">arrow_outward</span><div class="flex flex-wrap gap-2 justify-end"><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">Nuxt</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">WebGL</span><span class="border border-primary px-3 py-1 text-label-sm font-label-sm">WASM</span></div></div></div>
+</article>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background dark:bg-background text-primary dark:text-on-background border-t border-primary dark:border-outline-variant mt-section-gap w-full px-gutter py-12 flex flex-col md:flex-row justify-between items-center gap-4 max-w-container-max mx-auto">
+<div class="text-label-sm font-label-sm font-bold text-primary">
+            © 2024 ARCHITECT.DEV — ENGINEERED FOR PRECISION
+        </div>
+<div class="flex gap-6">
+<a class="text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-on-background hover:line-through transition-colors duration-200 text-label-sm font-label-sm" href="#">GitHub</a>
+<a class="text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-on-background hover:line-through transition-colors duration-200 text-label-sm font-label-sm" href="#">LinkedIn</a>
+<a class="text-secondary dark:text-on-surface-variant hover:text-primary dark:hover:text-on-background hover:line-through transition-colors duration-200 text-label-sm font-label-sm" href="#">Source Code</a>
+</div>
+</footer>
+</body></html>
