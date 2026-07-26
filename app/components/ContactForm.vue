@@ -1,18 +1,19 @@
 <script setup lang="ts">
+const toast = useToast()
+
 const form = reactive({
   name: '',
   email: '',
   message: ''
 })
 
-const status = ref<'idle' | 'loading' | 'success' | 'error'>('idle')
-const errorMessage = ref('')
+const status = ref<'idle' | 'loading'>('idle')
+const successOpen = ref(false)
 
 const onSubmit = async () => {
   if (status.value === 'loading') return
 
   status.value = 'loading'
-  errorMessage.value = ''
 
   try {
     await $fetch('/api/contact', {
@@ -24,17 +25,19 @@ const onSubmit = async () => {
       }
     })
 
-    status.value = 'success'
     form.name = ''
     form.email = ''
     form.message = ''
-  } catch (error: unknown) {
-    status.value = 'error'
-    const err = error as { data?: { statusMessage?: string }, statusMessage?: string }
-    errorMessage.value
-      = err?.data?.statusMessage
-        || err?.statusMessage
-        || 'Failed to send message. Please try again or email me directly.'
+    successOpen.value = true
+  } catch {
+    toast.add({
+      title: 'Failed to send message',
+      description: 'Please try submitting again.',
+      color: 'error',
+      icon: 'i-lucide-circle-alert'
+    })
+  } finally {
+    status.value = 'idle'
   }
 }
 </script>
@@ -92,20 +95,7 @@ const onSubmit = async () => {
     <UiAppButton type="submit" block :disabled="status === 'loading'">
       {{ status === 'loading' ? 'SENDING…' : 'SEND MESSAGE' }}
     </UiAppButton>
-
-    <p
-      v-if="status === 'success'"
-      class="mt-4 text-center text-label text-secondary"
-      role="status"
-    >
-      Message sent. I will get back to you soon.
-    </p>
-    <p
-      v-else-if="status === 'error'"
-      class="mt-4 text-center text-label text-secondary"
-      role="alert"
-    >
-      {{ errorMessage }}
-    </p>
   </form>
+
+  <ContactSuccessModal v-model:open="successOpen" />
 </template>

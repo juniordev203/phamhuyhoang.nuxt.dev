@@ -29,6 +29,11 @@ export const siteConfig = {
       href: 'tel:+84367435069',
       display: '0367 435 069'
     },
+    zalo: {
+      label: 'Zalo',
+      href: 'https://zalo.me/0367435069',
+      display: '0367 435 069'
+    },
     source: {
       label: 'Source Code',
       href: 'https://github.com/juniordev203'
