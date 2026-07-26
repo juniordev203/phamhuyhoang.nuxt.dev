@@ -62,6 +62,13 @@ export default defineNuxtConfig({
     classSuffix: ''
   },
 
+  // Smooth only for hash targets (#work, #tech…). Path changes jump instantly.
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
+
   content: {
     experimental: {
       // Node 22.5+ / Vercel-friendly; avoids native better-sqlite3 builds

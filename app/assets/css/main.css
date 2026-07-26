@@ -106,7 +106,9 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Do not set scroll-behavior: smooth globally — it animates route
+       scroll-to-top and stutters while the page layout is swapping. */
+    scroll-behavior: auto;
   }
 
   body {
