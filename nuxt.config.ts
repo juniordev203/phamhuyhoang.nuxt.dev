@@ -9,7 +9,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@vercel/analytics'
   ],
 
   css: ['~/assets/css/main.css'],
