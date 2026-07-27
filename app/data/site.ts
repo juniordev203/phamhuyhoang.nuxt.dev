@@ -1,5 +1,5 @@
 export const siteConfig = {
-  url: 'https://phamhuyhoang.nuxt.dev',
+  url: 'https://huyhoangpham.id.vn',
   name: 'ARCHITECT.DEV',
   fullName: 'Pham Huy Hoang',
   title: 'Frontend Engineer',

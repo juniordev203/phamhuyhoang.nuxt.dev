@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://phamhuyhoang.nuxt.dev/sitemap.xml
+Sitemap: https://huyhoangpham.id.vn/sitemap.xml

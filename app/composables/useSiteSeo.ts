@@ -9,7 +9,7 @@ type SiteSeoInput = {
 /** SEO + Open Graph for pages. Call from `<script setup>` only. */
 export function useSiteSeo(input: SiteSeoInput) {
   const site = useSiteConfig()
-  const siteUrl = String(site.url || 'https://phamhuyhoang.nuxt.dev').replace(
+  const siteUrl = String(site.url || 'https://huyhoangpham.id.vn').replace(
     /\/$/,
     ''
   )

@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
 
   site: {
-    url: process.env.NUXT_SITE_URL || 'https://phamhuyhoang.nuxt.dev',
+    url: process.env.NUXT_SITE_URL || 'https://huyhoangpham.id.vn',
     name: 'ARCHITECT.DEV'
   },
 
