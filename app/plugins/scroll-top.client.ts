@@ -1,15 +1,15 @@
 /**
- * Kill the mid-page flash when opening a post from a deep scroll position.
+ * Smooth cross-route transitions without intermediate-page flash.
  *
- * Causes stacked together:
- * 1. CSS `scroll-behavior: smooth` animated route scroll-to-top through a layout swap
- * 2. Browser keeps previous scrollY, then clamps it onto the shorter post page
- * 3. The clicked link stays focused → browser scrolls that element back into view
+ * Verified: home → post detail does NOT mount `/posts` (archive). Routes are
+ * siblings (`posts` vs `posts-slug`). Perceived jank came from revealing the
+ * still-mounted previous page (home hero) while the next page's async setup
+ * (`useAsyncData`) was unresolved — looked like hopping through another page.
  *
- * Fix: manual scroll restoration, blur the click target, force top:0 every frame
- * from beforeEach until afterEach settles. Hash navigations are left alone.
+ * Fix: hide <main> from beforeEach until Nuxt `page:finish`, then jump to top
+ * and reveal synchronously. Content scale unchanged (content/posts/YYYY/).
  */
-export default defineNuxtPlugin(() => {
+export default defineNuxtPlugin((nuxtApp) => {
   if (!import.meta.client) return
 
   if ('scrollRestoration' in history) {
@@ -17,7 +17,10 @@ export default defineNuxtPlugin(() => {
   }
 
   const router = useRouter()
-  let stopLock: (() => void) | null = null
+  const NAV_CLASS = 'is-route-changing'
+  let navToken = 0
+
+  window.__scrollNavPlugin = 'hide-main-v3'
 
   const jumpToTop = () => {
     window.scrollTo(0, 0)
@@ -25,46 +28,56 @@ export default defineNuxtPlugin(() => {
     document.body.scrollTop = 0
   }
 
-  const lockScrollAtTop = () => {
-    stopLock?.()
-
-    // Prevent the focused click target from pulling scroll back down
+  const beginNav = () => {
+    navToken += 1
     if (document.activeElement instanceof HTMLElement) {
       document.activeElement.blur()
     }
+    document.documentElement.classList.add(NAV_CLASS)
+    return navToken
+  }
 
-    let active = true
-    const tick = () => {
-      if (!active) return
-      jumpToTop()
-      requestAnimationFrame(tick)
-    }
-
+  const endNav = (token?: number) => {
+    if (token != null && token !== navToken) return
+    if (!document.documentElement.classList.contains(NAV_CLASS)) return
     jumpToTop()
-    requestAnimationFrame(tick)
+    document.documentElement.classList.remove(NAV_CLASS)
+  }
 
-    stopLock = () => {
-      active = false
-      stopLock = null
-    }
+  const cancelNav = () => {
+    navToken += 1
+    document.documentElement.classList.remove(NAV_CLASS)
   }
 
   router.beforeEach((to, from) => {
     if (!shouldResetScroll(to, from)) return
-    lockScrollAtTop()
+    beginNav()
   })
 
-  router.afterEach((to, from) => {
+  router.afterEach((to, from, failure) => {
+    if (failure) {
+      cancelNav()
+      return
+    }
     if (!shouldResetScroll(to, from)) {
-      stopLock?.()
+      cancelNav()
       return
     }
 
-    jumpToTop()
-    requestAnimationFrame(() => {
-      jumpToTop()
-      stopLock?.()
-    })
+    // Safety net: if page hooks already fired (or never will), do not leave
+    // the page permanently hidden.
+    const token = navToken
+    window.setTimeout(() => endNav(token), 2000)
+  })
+
+  router.onError(() => {
+    cancelNav()
+  })
+
+  // Reveal only when the next page has finished loading — not in afterEach,
+  // which can run while Nuxt still paints the previous page.
+  nuxtApp.hook('page:finish', () => {
+    endNav()
   })
 })
 
@@ -80,4 +93,10 @@ function shouldResetScroll(
   if (to.hash) return false
   if (to.meta.scrollToTop === false) return false
   return true
+}
+
+declare global {
+  interface Window {
+    __scrollNavPlugin?: string
+  }
 }

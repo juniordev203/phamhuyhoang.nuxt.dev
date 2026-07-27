@@ -111,6 +111,13 @@
     scroll-behavior: auto;
   }
 
+  /* Hide page content while a cross-route navigation is in flight so the
+     previous page (e.g. home) cannot flash mid-transition. */
+  html.is-route-changing main {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   body {
     @apply bg-background text-on-background font-sans antialiased;
     background-image:
