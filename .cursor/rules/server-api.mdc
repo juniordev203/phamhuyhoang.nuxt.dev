@@ -14,8 +14,10 @@ alwaysApply: false
 
 ## Validation (Zod)
 
+- Shared schema: `#shared/contact` (`contactSchema`) — use on both client and server.
+- Extra anti-abuse fields: `website` (honeypot), `startedAt` (time-trap).
+
 ```ts
-// ✅
 const parsed = contactSchema.safeParse(body)
 if (!parsed.success) {
   throw createError({
@@ -27,12 +29,15 @@ if (!parsed.success) {
 ```
 
 - Trim/max-length strings; return flattened Zod errors in `data`.
-- Missing config → `500`; upstream email failure → `502`.
+- Missing config → `500`; upstream email failure → `502` with **generic** message (log Resend detail server-side only).
 
 ## Contact / Resend
 
-- Mirror client fields: `name`, `email`, `message`.
+- Fields: `name`, `email`, `message` (+ honeypot/time-trap).
 - Escape user HTML before embedding (`escapeHtml`); set `replyTo` to sender email.
+- Rate-limit via `consumeRateLimit` (IP, fixed window).
+- Same-origin check on `Origin` / `Referer` when present.
+- Honeypot filled → return `{ ok: true }` (do not tip bots).
 - Success response: `{ ok: true }`.
 
 ## Don't
@@ -43,4 +48,7 @@ return { ok: false, error: String(e) }
 
 // ❌ trust body without schema
 const { email } = await readBody(event)
+
+// ❌ leak upstream Resend messages to the client
+statusMessage: error.message
 ```

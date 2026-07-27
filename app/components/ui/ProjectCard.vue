@@ -45,6 +45,11 @@ const wrapperAttrs = computed(() => {
       <NuxtImg
         :src="project.image"
         :alt="project.title"
+        width="1200"
+        height="670"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+        format="webp"
+        loading="lazy"
         class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
       />
     </div>

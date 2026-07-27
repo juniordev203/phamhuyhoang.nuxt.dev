@@ -20,8 +20,6 @@ export default defineNuxtPlugin((nuxtApp) => {
   const NAV_CLASS = 'is-route-changing'
   let navToken = 0
 
-  window.__scrollNavPlugin = 'hide-main-v3'
-
   const jumpToTop = () => {
     window.scrollTo(0, 0)
     document.documentElement.scrollTop = 0
@@ -93,10 +91,4 @@ function shouldResetScroll(
   if (to.hash) return false
   if (to.meta.scrollToTop === false) return false
   return true
-}
-
-declare global {
-  interface Window {
-    __scrollNavPlugin?: string
-  }
 }

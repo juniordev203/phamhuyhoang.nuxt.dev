@@ -13,23 +13,26 @@ Personal portfolio site (**ARCHITECT.DEV**) for Pham Huy Hoang — monochrome, S
 - **Vue 3** + **TypeScript** + **vue-router**
 - **Tailwind CSS 4** + **@nuxt/ui** 4 (app shell / toast; custom UI preferred)
 - **@nuxt/content** 3 — blog in `content/posts/`
-- **@nuxt/image**, **@nuxt/eslint**, **@nuxtjs/google-fonts**
-- **Zod** + **Resend** for contact API
-- Package manager: **pnpm** only (`pnpm dev|build|generate|preview`)
+- **@nuxt/image**, **@nuxt/eslint**, **@nuxtjs/google-fonts**, **@nuxtjs/sitemap**
+- **Zod** (`shared/contact.ts`) + **Resend** for contact API
+- Package manager: **pnpm** only (`pnpm dev|build|lint|typecheck|preview`)
 
 ## Directory map
 
 | Path | Role |
 |------|------|
-| `app/pages/` | Routes: `/`, `/work`, `/contact`, `/posts` |
+| `app/pages/` | Routes: `/` (hash sections), `/posts`, `/posts/[...slug]`; `/work` & `/contact` redirect to hashes |
 | `app/components/{home,layout,ui,posts}/` | Feature-grouped SFCs |
-| `app/layouts/` | `default`, `contact` |
+| `app/layouts/` | `default` only |
 | `app/data/` | Static site/project/skill content + types |
 | `app/utils/` | Shared helpers (`posts`, `nav`) |
+| `app/composables/` | Vue composables (`useSiteSeo`) |
+| `shared/` | Isomorphic schemas (contact) |
 | `app/assets/css/main.css` | Design tokens & utilities |
 | `content/posts/` | Markdown posts |
 | `server/api/` | Nitro handlers |
-| `.stitch/DESIGN.md` | Visual system source of truth |
+| `docs/2026-07-27/` | Refactor/upgrade phase tasks |
+| `.stitch/DESIGN.md` | Visual system source (design archive; not required at runtime) |
 
 ## Agent defaults
 

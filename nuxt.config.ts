@@ -8,10 +8,16 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/ui',
     '@nuxtjs/google-fonts',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
 
   css: ['~/assets/css/main.css'],
+
+  site: {
+    url: process.env.NUXT_SITE_URL || 'https://phamhuyhoang.nuxt.dev',
+    name: 'ARCHITECT.DEV'
+  },
 
   googleFonts: {
     display: 'swap',
@@ -20,7 +26,8 @@ export default defineNuxtConfig({
       Geist: [400, 600, 700],
       'JetBrains Mono': [400, 500]
     },
-    // Material Symbols loaded via app.head.link (icon font)
+    // Material Symbols loaded once via app/app.vue useHead (icon font).
+    // Do not put fonts.googleapis.com stylesheets in app.head — @nuxtjs/google-fonts strips them.
     fontsDir: 'fonts'
   },
 
@@ -35,17 +42,7 @@ export default defineNuxtConfig({
         }
       ],
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        {
-          rel: 'preconnect',
-          href: 'https://fonts.gstatic.com',
-          crossorigin: ''
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap'
-        }
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }
       ]
     }
   },
@@ -73,6 +70,19 @@ export default defineNuxtConfig({
     experimental: {
       // Node 22.5+ / Vercel-friendly; avoids native better-sqlite3 builds
       sqliteConnector: 'native'
+    }
+  },
+
+  nitro: {
+    routeRules: {
+      '/**': {
+        headers: {
+          'X-Frame-Options': 'DENY',
+          'X-Content-Type-Options': 'nosniff',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=()'
+        }
+      }
     }
   },
 

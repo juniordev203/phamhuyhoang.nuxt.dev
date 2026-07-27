@@ -32,9 +32,11 @@ const { data: surround } = await useAsyncData(
 const prev = computed(() => surround.value?.[0] || null)
 const next = computed(() => surround.value?.[1] || null)
 
-useSeoMeta({
+useSiteSeo({
   title: `${post.value.title} — ${siteConfig.name}`,
-  description: post.value.description
+  description: post.value.description || siteConfig.tagline,
+  path: route.path,
+  type: 'article'
 })
 </script>
 

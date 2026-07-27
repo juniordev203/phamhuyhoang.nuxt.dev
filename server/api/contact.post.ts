@@ -1,13 +1,26 @@
+import type { H3Event } from 'h3'
 import { Resend } from 'resend'
-import { z } from 'zod'
+import {
+  CONTACT_MIN_ELAPSED_MS,
+  contactSchema
+} from '#shared/contact'
 
-const contactSchema = z.object({
-  name: z.string().trim().min(1, 'Name is required').max(100),
-  email: z.string().trim().email('Invalid email').max(200),
-  message: z.string().trim().min(1, 'Message is required').max(5000)
-})
+const RATE_LIMIT = 5
+const RATE_WINDOW_MS = 15 * 60 * 1000
 
 export default defineEventHandler(async (event) => {
+  assertSameOrigin(event)
+
+  const ip = getRequestIP(event, { xForwardedFor: true }) || 'unknown'
+  const limited = consumeRateLimit(`contact:${ip}`, RATE_LIMIT, RATE_WINDOW_MS)
+  if (!limited.ok) {
+    setResponseHeader(event, 'Retry-After', limited.retryAfterSec)
+    throw createError({
+      statusCode: 429,
+      statusMessage: 'Too many requests. Please try again later.'
+    })
+  }
+
   const config = useRuntimeConfig()
   const body = await readBody(event)
   const parsed = contactSchema.safeParse(body)
@@ -20,6 +33,23 @@ export default defineEventHandler(async (event) => {
     })
   }
 
+  const { name, email, message, website, startedAt } = parsed.data
+
+  // Honeypot tripped — pretend success so bots do not learn the field.
+  if (website.trim()) {
+    return { ok: true }
+  }
+
+  if (
+    startedAt == null
+    || Date.now() - startedAt < CONTACT_MIN_ELAPSED_MS
+  ) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Please wait a moment and try again.'
+    })
+  }
+
   if (!config.resendApiKey) {
     throw createError({
       statusCode: 500,
@@ -27,7 +57,6 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const { name, email, message } = parsed.data
   const to = config.contactEmail || 'huyhoangpham8460@gmail.com'
   const resend = new Resend(config.resendApiKey)
 
@@ -52,14 +81,51 @@ export default defineEventHandler(async (event) => {
   })
 
   if (error) {
+    console.error('[contact] Resend error:', error)
     throw createError({
       statusCode: 502,
-      statusMessage: error.message || 'Failed to send email'
+      statusMessage: 'Failed to send message. Please try again later.'
     })
   }
 
   return { ok: true }
 })
+
+function assertSameOrigin(event: H3Event) {
+  const url = getRequestURL(event)
+  const origin = getHeader(event, 'origin')
+  const referer = getHeader(event, 'referer')
+  const allowed = url.origin
+
+  // Non-browser clients may omit both; still rate-limited + honeypot.
+  if (!origin && !referer) return
+
+  if (origin && origin !== allowed) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Forbidden'
+    })
+  }
+
+  if (!referer) return
+
+  let refOrigin: string
+  try {
+    refOrigin = new URL(referer).origin
+  } catch {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Forbidden'
+    })
+  }
+
+  if (refOrigin !== allowed) {
+    throw createError({
+      statusCode: 403,
+      statusMessage: 'Forbidden'
+    })
+  }
+}
 
 function escapeHtml(value: string) {
   return value

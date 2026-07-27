@@ -37,10 +37,11 @@ watchEffect(() => {
   }
 })
 
-useSeoMeta({
+useSiteSeo({
   title: `Posts — ${siteConfig.name}`,
   description:
-    'Daily notes on frontend craft, Nuxt architecture, and shipping precise interfaces.'
+    'Daily notes on frontend craft, Nuxt architecture, and shipping precise interfaces.',
+  path: '/posts'
 })
 </script>
 

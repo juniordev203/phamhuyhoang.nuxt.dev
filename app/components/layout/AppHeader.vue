@@ -4,6 +4,7 @@ import { resolveNavRoute } from '~/utils/nav'
 
 const route = useRoute()
 const mobileOpen = ref(false)
+const menuButton = ref<HTMLButtonElement | null>(null)
 
 const isActive = (to: string) => {
   if (to === '/#posts') {
@@ -20,12 +21,31 @@ const isActive = (to: string) => {
   return route.path === to
 }
 
+const closeMobile = () => {
+  mobileOpen.value = false
+}
+
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape' && mobileOpen.value) {
+    closeMobile()
+    menuButton.value?.focus()
+  }
+}
+
 watch(
   () => route.fullPath,
   () => {
-    mobileOpen.value = false
+    closeMobile()
   }
 )
+
+onMounted(() => {
+  window.addEventListener('keydown', onKeydown)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('keydown', onKeydown)
+})
 </script>
 
 <template>
@@ -40,7 +60,10 @@ watch(
         {{ siteConfig.name }}
       </NuxtLink>
 
-      <nav class="hidden items-center gap-8 md:flex">
+      <nav
+        class="hidden items-center gap-8 md:flex"
+        aria-label="Primary"
+      >
         <NuxtLink
           v-for="item in siteConfig.nav"
           :key="item.to"
@@ -61,9 +84,12 @@ watch(
       </div>
 
       <button
+        ref="menuButton"
         type="button"
         class="cursor-pointer text-primary md:hidden"
         aria-label="Toggle menu"
+        aria-controls="mobile-nav"
+        :aria-expanded="mobileOpen"
         @click="mobileOpen = !mobileOpen"
       >
         <span class="material-symbols-outlined">
@@ -74,6 +100,7 @@ watch(
 
     <div
       v-if="mobileOpen"
+      id="mobile-nav"
       class="container-site flex flex-col gap-4 border-t border-primary py-6 md:hidden"
     >
       <NuxtLink

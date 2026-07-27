@@ -32,6 +32,12 @@ import { siteConfig } from '~/data/site'
       <NuxtImg
         src="/images/hero-architecture.jpg"
         alt="Minimalist architectural photograph with sharp intersecting lines"
+        width="1024"
+        height="1024"
+        sizes="(max-width: 768px) 0px, 320px"
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
         class="h-full w-full border border-primary object-cover"
       />
       <div

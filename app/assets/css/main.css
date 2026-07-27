@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
-@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap");
 
 @theme {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
@@ -109,6 +108,20 @@
     /* Do not set scroll-behavior: smooth globally — it animates route
        scroll-to-top and stutters while the page layout is swapping. */
     scroll-behavior: auto;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 
   /* Hide page content while a cross-route navigation is in flight so the

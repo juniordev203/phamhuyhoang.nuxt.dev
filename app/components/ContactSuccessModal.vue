@@ -3,23 +3,67 @@ import { siteConfig } from '~/data/site'
 
 const open = defineModel<boolean>('open', { required: true })
 
+const dialogRef = ref<HTMLElement | null>(null)
+const previousFocus = ref<HTMLElement | null>(null)
+
 const close = () => {
   open.value = false
 }
 
-const onKeydown = (event: KeyboardEvent) => {
-  if (event.key === 'Escape') close()
+const focusableSelector = [
+  'a[href]',
+  'button:not([disabled])',
+  'textarea:not([disabled])',
+  'input:not([disabled])',
+  'select:not([disabled])',
+  '[tabindex]:not([tabindex="-1"])'
+].join(',')
+
+const getFocusable = () => {
+  if (!dialogRef.value) return [] as HTMLElement[]
+  return Array.from(
+    dialogRef.value.querySelectorAll<HTMLElement>(focusableSelector)
+  )
 }
 
-watch(open, (value) => {
+const onKeydown = (event: KeyboardEvent) => {
+  if (event.key === 'Escape') {
+    close()
+    return
+  }
+
+  if (event.key !== 'Tab' || !dialogRef.value) return
+
+  const focusable = getFocusable()
+  if (focusable.length === 0) return
+
+  const first = focusable[0]!
+  const last = focusable[focusable.length - 1]!
+  const active = document.activeElement as HTMLElement | null
+
+  if (event.shiftKey && active === first) {
+    event.preventDefault()
+    last.focus()
+  } else if (!event.shiftKey && active === last) {
+    event.preventDefault()
+    first.focus()
+  }
+}
+
+watch(open, async (value) => {
   if (!import.meta.client) return
 
   document.body.style.overflow = value ? 'hidden' : ''
 
   if (value) {
+    previousFocus.value = document.activeElement as HTMLElement | null
     window.addEventListener('keydown', onKeydown)
+    await nextTick()
+    getFocusable()[0]?.focus()
   } else {
     window.removeEventListener('keydown', onKeydown)
+    previousFocus.value?.focus()
+    previousFocus.value = null
   }
 })
 
@@ -33,10 +77,10 @@ onBeforeUnmount(() => {
 <template>
   <Teleport to="body">
     <Transition
-      enter-active-class="transition duration-200 ease-out"
+      enter-active-class="transition duration-200 ease-out motion-reduce:transition-none"
       enter-from-class="opacity-0"
       enter-to-class="opacity-100"
-      leave-active-class="transition duration-150 ease-in"
+      leave-active-class="transition duration-150 ease-in motion-reduce:transition-none"
       leave-from-class="opacity-100"
       leave-to-class="opacity-0"
     >
@@ -48,15 +92,16 @@ onBeforeUnmount(() => {
       >
         <Transition
           appear
-          enter-active-class="transition duration-200 ease-out"
-          enter-from-class="opacity-0 translate-y-3 scale-[0.98]"
+          enter-active-class="transition duration-200 ease-out motion-reduce:transition-none"
+          enter-from-class="opacity-0 translate-y-3 scale-[0.98] motion-reduce:translate-y-0 motion-reduce:scale-100"
           enter-to-class="opacity-100 translate-y-0 scale-100"
-          leave-active-class="transition duration-150 ease-in"
+          leave-active-class="transition duration-150 ease-in motion-reduce:transition-none"
           leave-from-class="opacity-100 translate-y-0 scale-100"
-          leave-to-class="opacity-0 translate-y-2 scale-[0.98]"
+          leave-to-class="opacity-0 translate-y-2 scale-[0.98] motion-reduce:translate-y-0 motion-reduce:scale-100"
         >
           <div
             v-if="open"
+            ref="dialogRef"
             role="dialog"
             aria-modal="true"
             aria-labelledby="contact-success-title"

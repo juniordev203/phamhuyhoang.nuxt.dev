@@ -37,7 +37,7 @@ Root-level components stay unprefixed: `ContactForm.vue` → `<ContactForm />`.
 
 - Pages live in `app/pages/`; keep route SFCs thin — compose section components.
 - Set SEO with `useSeoMeta` using `siteConfig` from `~/data/site`.
-- Layouts: `default` (header/main/footer + `container-site`); `contact` when needed via `definePageMeta`.
+- Layouts: `default` only (header / main / footer + `container-site`). `/work` and `/contact` redirect to hash sections on `/`.
 - Images: prefer `<NuxtImg>`; icons: Material Symbols (`material-symbols-outlined`).
 
 ## Reactivity

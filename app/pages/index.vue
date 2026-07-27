@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
 
-useSeoMeta({
+useSiteSeo({
   title: `${siteConfig.name} — ${siteConfig.title}`,
-  description: siteConfig.tagline
+  description: siteConfig.tagline,
+  path: '/'
 })
 </script>
 

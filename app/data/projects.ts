@@ -26,7 +26,7 @@ export const projects: Project[] = [
       'Structured content around real work experience with a performance-minded Nuxt + Tailwind stack.'
     ],
     tags: ['Nuxt 4', 'Vue 3', 'TypeScript', 'TailwindCSS'],
-    image: '/images/projects/architect-dev.png',
+    image: '/images/projects/architect-dev.webp',
     featured: true,
     href: '/'
   },
@@ -49,7 +49,7 @@ export const projects: Project[] = [
       'Zustand',
       'WebSocket'
     ],
-    image: '/images/projects/sm-workos.png'
+    image: '/images/projects/sm-workos.webp'
   },
   {
     slug: 'projenti',
@@ -64,7 +64,7 @@ export const projects: Project[] = [
       'Built a drag-and-drop Kanban system with optimistic updates and rollback handling.'
     ],
     tags: ['Next.js', 'TypeScript', 'Next Auth', 'TanStack Query'],
-    image: '/images/projects/projenti.png',
+    image: '/images/projects/projenti.webp',
     href: 'https://projenti.cdtm-ito.org'
   },
   {
@@ -80,7 +80,7 @@ export const projects: Project[] = [
       'Optimized data handling for faster page loading across practice flows.'
     ],
     tags: ['Vue.js', 'Element Plus', 'RESTful API'],
-    image: '/images/projects/tryhsk.png',
+    image: '/images/projects/tryhsk.webp',
     href: 'https://tryhsk.com'
   }
 ]
