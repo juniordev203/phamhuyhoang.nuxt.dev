@@ -15,6 +15,11 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  image: {
+    quality: 80,
+    format: ['webp']
+  },
+
   site: {
     url: process.env.NUXT_SITE_URL || 'https://huyhoangpham.id.vn',
     name: 'ARCHITECT.DEV'
@@ -27,8 +32,8 @@ export default defineNuxtConfig({
       Geist: [400, 600, 700],
       'JetBrains Mono': [400, 500]
     },
-    // Material Symbols loaded once via app/app.vue useHead (icon font).
-    // Do not put fonts.googleapis.com stylesheets in app.head — @nuxtjs/google-fonts strips them.
+    // Material Symbols self-hosted via @font-face in app/assets/css/main.css
+    // (public/fonts/material-symbols-outlined.woff2) — avoid fonts.googleapis.com.
     fontsDir: 'fonts'
   },
 

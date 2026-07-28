@@ -26,4 +26,5 @@ logs
 # Downloaded Google Fonts cache
 app/assets/css/fonts.css
 public/fonts/*
+!public/fonts/material-symbols-outlined.woff2
 .vercel

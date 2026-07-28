@@ -34,8 +34,10 @@ import { siteConfig } from '~/data/site'
         alt="Minimalist architectural photograph with sharp intersecting lines"
         width="1024"
         height="1024"
-        sizes="(max-width: 768px) 0px, 320px"
+        sizes="(max-width: 768px) 0px, 260px"
         format="webp"
+        quality="80"
+        preload
         loading="eager"
         fetchpriority="high"
         class="h-full w-full border border-primary object-cover"

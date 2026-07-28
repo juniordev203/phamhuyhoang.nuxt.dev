@@ -25,6 +25,15 @@ const wrapperAttrs = computed(() => {
   }
   return { to: props.project.href }
 })
+
+const imageSizes = computed(() =>
+  props.project.featured
+    ? '(max-width: 768px) 100vw, 1600px'
+    : '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px'
+)
+
+const imageWidth = computed(() => (props.project.featured ? 1600 : 1200))
+const imageHeight = computed(() => (props.project.featured ? 824 : 670))
 </script>
 
 <template>
@@ -45,12 +54,19 @@ const wrapperAttrs = computed(() => {
       <NuxtImg
         :src="project.image"
         :alt="project.title"
-        width="1200"
-        height="670"
-        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+        :width="imageWidth"
+        :height="imageHeight"
+        :sizes="imageSizes"
+        :densities="project.featured ? 'x1' : 'x1 x2'"
+        :quality="project.featured ? 90 : 80"
         format="webp"
         loading="lazy"
-        class="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+        :class="[
+          'h-full w-full object-cover transition-all duration-500',
+          project.featured
+            ? ''
+            : 'grayscale group-hover:grayscale-0'
+        ]"
       />
     </div>
 
