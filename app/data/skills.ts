@@ -1,6 +1,6 @@
 export interface SkillGroup {
+  key: string
   icon: string
-  title: string
   items: string[]
 }
 
@@ -26,23 +26,23 @@ export const skillLinks: Record<string, string> = {
 
 export const skillGroups: SkillGroup[] = [
   {
+    key: 'primaryStack',
     icon: 'code',
-    title: 'Primary Stack',
     items: ['Vue 3', 'Nuxt.js', 'TypeScript', 'TailwindCSS']
   },
   {
+    key: 'ecosystem',
     icon: 'layers',
-    title: 'Ecosystem',
     items: ['Javascript', 'Node.js', 'Pinia', 'TanStack Query']
   },
   {
+    key: 'uiLibraries',
     icon: 'design_services',
-    title: 'UI Libraries',
     items: ['Shadcn UI', 'Antd', 'Element Plus']
   },
   {
+    key: 'tools',
     icon: 'build',
-    title: 'Tools',
     items: ['Vite', 'Webpack', 'Docker', 'MySQL']
   }
 ]

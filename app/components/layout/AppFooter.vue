@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -8,7 +10,7 @@ import { siteConfig } from '~/data/site'
       class="container-site flex w-full flex-col items-center justify-between gap-4 py-12 md:flex-row"
     >
       <span class="text-label font-bold text-primary">
-        {{ siteConfig.copyright }}
+        {{ t('site.copyright') }}
       </span>
 
       <div class="flex gap-6">
@@ -30,7 +32,7 @@ import { siteConfig } from '~/data/site'
           :href="`mailto:${siteConfig.email}`"
           class="cursor-pointer text-label text-secondary transition-colors duration-200 hover:text-primary hover:line-through"
         >
-          Email
+          {{ t('contact.email') }}
         </a>
       </div>
     </div>

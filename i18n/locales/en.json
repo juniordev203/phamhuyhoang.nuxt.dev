@@ -1,0 +1,156 @@
+{
+  "site": {
+    "title": "Frontend Engineer",
+    "tagline": "Design-driven engineer focused on building simple, optimized, and clean web experiences.",
+    "introduction": [
+      "I am a Front-End Developer with 1.5+ years of hands-on experience specializing in creating high-performance, user-centric web applications with the modern JavaScript ecosystem (Vue 3, Nuxt.js, TypeScript).",
+      "Proven ability to translate complex UI/UX designs into responsive, interactive, and scalable products.",
+      "Eager to contribute to a collaborative team and solve challenging technical problems."
+    ],
+    "copyright": "© 2026 ARCHITECT.DEV — ENGINEERED FOR PRECISION"
+  },
+  "nav": {
+    "work": "Work",
+    "tech": "Tech",
+    "posts": "Posts",
+    "contact": "Contact"
+  },
+  "hero": {
+    "viewProjects": "View Projects",
+    "getInTouch": "Get in touch",
+    "imageAlt": "Minimalist architectural photograph with sharp intersecting lines"
+  },
+  "work": {
+    "eyebrow": "001 // WORK",
+    "heading": "Selected Works",
+    "description": "Selected work including this portfolio, Sm-WorkOS, Projenti, and TryHSK — focused on scalable frontend architecture, real-time UX, and clean delivery."
+  },
+  "tech": {
+    "eyebrow": "002 // STACK",
+    "heading": "Technical Arsenal"
+  },
+  "skills": {
+    "primaryStack": "Primary Stack",
+    "ecosystem": "Ecosystem",
+    "uiLibraries": "UI Libraries",
+    "tools": "Tools"
+  },
+  "postsSection": {
+    "eyebrow": "003 // WRITING",
+    "heading": "Posts",
+    "viewAll": "View all",
+    "viewAllPosts": "VIEW ALL POSTS",
+    "empty": "New posts will appear here soon."
+  },
+  "posts": {
+    "eyebrow": "Writing",
+    "title": "Posts",
+    "description": "Daily writing on frontend engineering, product delivery, and the craft behind clean interfaces. New entries land here as the archive grows.",
+    "empty": "No published posts yet.",
+    "read": "Read",
+    "allPosts": "All posts",
+    "previous": "Previous",
+    "next": "Next",
+    "page": "Page {page} / {total}",
+    "paginationLabel": "Posts pagination",
+    "adjacentLabel": "Adjacent posts",
+    "notFound": "Post not found"
+  },
+  "contact": {
+    "eyebrow": "004 // CONTACT",
+    "heading": "Let's work.",
+    "description": "Whether you're a recruiter looking for a frontend engineer, or a client ready to build a website or web product — I'd love to hear from you.",
+    "email": "Email",
+    "github": "GitHub",
+    "phone": "Phone"
+  },
+  "form": {
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you{'@'}company.com",
+    "message": "Message",
+    "messagePlaceholder": "Share the role, project idea, or how I can help...",
+    "send": "SEND MESSAGE",
+    "sending": "SENDING…",
+    "websiteLabel": "Website",
+    "invalidTitle": "Check your form",
+    "invalidDescription": "Invalid form data",
+    "waitTitle": "Please wait a moment",
+    "waitDescription": "Take a second before sending your message.",
+    "failTitle": "Failed to send message",
+    "failDescription": "Please try submitting again."
+  },
+  "success": {
+    "eyebrow": "Message received",
+    "title": "Thank you for reaching out!",
+    "body1": "I've received your message.",
+    "body2": "I'll review your request and get back to you by email within 24 hours.",
+    "faster": "If your project needs a quicker response, you can also reach me via:",
+    "email": "Email",
+    "zalo": "Zalo",
+    "close": "CLOSE",
+    "closeLabel": "Close"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switchLight": "Switch to light mode",
+    "switchDark": "Switch to dark mode"
+  },
+  "a11y": {
+    "skipToContent": "Skip to content",
+    "toggleMenu": "Toggle menu",
+    "primaryNav": "Primary"
+  },
+  "lang": {
+    "label": "Language",
+    "switchTo": "Switch language"
+  },
+  "projects": {
+    "architect-dev": {
+      "title": "ARCHITECT.DEV",
+      "company": "Personal",
+      "role": "Frontend Engineer",
+      "duration": "2026",
+      "summary": "A minimalist portfolio built with Nuxt 4 — monochrome grid system, sharp typography, and a code-first aesthetic inspired by Swiss design.",
+      "contributions": [
+        "Designed and implemented the full UI system from Stitch: design tokens, layout grid, and reusable components.",
+        "Structured content around real work experience with a performance-minded Nuxt + Tailwind stack."
+      ]
+    },
+    "sm-workos": {
+      "title": "Sm-WorkOS",
+      "company": "Outsource-team",
+      "role": "Teamlead Front-End",
+      "duration": "Jun 2025 – Dec 2025",
+      "summary": "Customizable task management module with dynamic task types, custom fields, and automated workflows for internal processes.",
+      "contributions": [
+        "Built a dynamic form & workflow engine with drag-and-drop UI, custom fields, and validation rules for admins.",
+        "Developed a real-time Kanban board with WebSocket + optimistic UI, including validation to prevent invalid state transitions."
+      ]
+    },
+    "projenti": {
+      "title": "Projenti",
+      "company": "CDTM-Company",
+      "role": "Frontend Developer",
+      "duration": "Sep 2024 – Oct 2025",
+      "summary": "All-in-one project management platform for software teams — Agile progress tracking and real-time server monitoring.",
+      "contributions": [
+        "Implemented secure auth and RBAC with Next Auth, plus an admin panel for users, pagination, and permissions.",
+        "Built a drag-and-drop Kanban system with optimistic updates and rollback handling."
+      ]
+    },
+    "tryhsk": {
+      "title": "TryHSK",
+      "company": "Thien Ha Xanh",
+      "role": "Intern Front-End Developer",
+      "duration": "Jul 2024 – Aug 2024",
+      "summary": "Vietnam's leading HSK exam preparation platform with practice tests from HSK 1 to HSK 6.",
+      "contributions": [
+        "Developed UI components for question pages and integrated RESTful APIs for dynamic question sets.",
+        "Optimized data handling for faster page loading across practice flows."
+      ]
+    }
+  }
+}

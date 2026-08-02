@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { formatPostDate } from '~/utils/posts'
 
+const { t, locale } = useI18n()
+
 export type PostListItem = {
   path: string
   title: string
@@ -24,7 +26,7 @@ defineProps<{
         class="text-label text-secondary"
         :datetime="post.date"
       >
-        {{ formatPostDate(post.date) }}
+        {{ formatPostDate(post.date, locale) }}
       </time>
       <span
         v-for="tag in post.tags?.slice(0, 3)"
@@ -47,7 +49,7 @@ defineProps<{
     </p>
 
     <span class="inline-flex items-center gap-1 text-label text-primary">
-      Read
+      {{ t('posts.read') }}
       <span class="material-symbols-outlined !text-base transition-transform group-hover:translate-x-1">
         arrow_forward
       </span>

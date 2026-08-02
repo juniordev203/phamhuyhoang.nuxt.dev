@@ -7,8 +7,9 @@ const base = (process.env.BASE_URL || 'http://localhost:3000').replace(/\/$/, ''
 
 const checks = [
   { path: '/', expect: 200, includes: ['ARCHITECT.DEV'] },
+  { path: '/vi', expect: 200, includes: ['Kỹ sư Frontend'] },
   { path: '/posts', expect: 200, includes: ['Posts'] },
-  { path: '/sitemap.xml', expect: 200, includes: ['urlset', 'url'] },
+  { path: '/vi/posts', expect: 200, includes: ['Bài viết'] },
   { path: '/robots.txt', expect: 200, includes: ['Sitemap:'] }
 ]
 
@@ -30,6 +31,29 @@ for (const check of checks) {
   } catch (err) {
     failed += 1
     console.error(`FAIL ${url}`, err)
+  }
+}
+
+// Sitemap: /sitemap.xml redirects to the index; per-locale sitemaps hold the URLs.
+{
+  const index = await fetch(`${base}/sitemap_index.xml`)
+  const indexText = await index.text()
+  if (index.status === 200 && indexText.includes('sitemapindex')) {
+    console.log('OK   sitemap_index.xml')
+  } else {
+    failed += 1
+    console.error(`FAIL sitemap_index.xml status=${index.status}`)
+  }
+  for (const loc of ['en-US', 'vi-VN']) {
+    const url = `${base}/__sitemap__/${loc}.xml`
+    const res = await fetch(url)
+    const text = await res.text()
+    if (res.status === 200 && text.includes('<urlset') && text.includes('<url>')) {
+      console.log(`OK   sitemap ${loc}`)
+    } else {
+      failed += 1
+      console.error(`FAIL sitemap ${loc} status=${res.status}`)
+    }
   }
 }
 

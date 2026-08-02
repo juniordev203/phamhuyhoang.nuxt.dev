@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
+
+const { t } = useI18n()
+const localePath = useLocalePath()
 </script>
 
 <template>
@@ -11,17 +14,20 @@ import { siteConfig } from '~/data/site'
         {{ siteConfig.fullName }}
       </p>
       <h1 class="mb-6 text-headline-xl text-primary uppercase">
-        {{ siteConfig.title }}
+        {{ t('site.title') }}
       </h1>
       <p class="mb-12 max-w-2xl text-body-lg text-secondary">
-        {{ siteConfig.tagline }}
+        {{ t('site.tagline') }}
       </p>
       <div class="flex flex-wrap gap-4">
-        <UiAppButton :to="{ path: '/', hash: '#work' }">
-          View Projects
+        <UiAppButton :to="localePath({ path: '/', hash: '#work' })">
+          {{ t('hero.viewProjects') }}
         </UiAppButton>
-        <UiAppButton :to="{ path: '/', hash: '#contact' }" variant="secondary">
-          Get in touch
+        <UiAppButton
+          :to="localePath({ path: '/', hash: '#contact' })"
+          variant="secondary"
+        >
+          {{ t('hero.getInTouch') }}
         </UiAppButton>
       </div>
     </div>
@@ -31,7 +37,7 @@ import { siteConfig } from '~/data/site'
     >
       <NuxtImg
         src="/images/hero-architecture.jpg"
-        alt="Minimalist architectural photograph with sharp intersecting lines"
+        :alt="t('hero.imageAlt')"
         width="1024"
         height="1024"
         sizes="(max-width: 768px) 0px, 320px"

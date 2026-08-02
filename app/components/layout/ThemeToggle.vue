@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { t } = useI18n()
 const colorMode = useColorMode()
 
 const isDark = computed({
@@ -21,13 +22,13 @@ const buttonClass
     <button
       type="button"
       :class="buttonClass"
-      :aria-label="isDark ? 'Switch to light mode' : 'Switch to dark mode'"
+      :aria-label="isDark ? t('theme.switchLight') : t('theme.switchDark')"
       @click="toggle"
     >
       <span class="material-symbols-outlined !text-base">
         {{ isDark ? 'light_mode' : 'dark_mode' }}
       </span>
-      <span>{{ isDark ? 'Light' : 'Dark' }}</span>
+      <span>{{ isDark ? t('theme.light') : t('theme.dark') }}</span>
     </button>
 
     <template #fallback>
@@ -37,7 +38,7 @@ const buttonClass
         aria-hidden="true"
       >
         <span class="material-symbols-outlined !text-base">dark_mode</span>
-        <span>Dark</span>
+        <span>{{ t('theme.dark') }}</span>
       </span>
     </template>
   </ClientOnly>

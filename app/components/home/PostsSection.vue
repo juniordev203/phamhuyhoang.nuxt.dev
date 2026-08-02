@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { POSTS_HOME_PREVIEW } from '~/utils/posts'
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 const { data: posts } = await useAsyncData('home-posts', () =>
   queryCollection('posts')
     .where('draft', '=', false)
@@ -15,15 +18,15 @@ const { data: posts } = await useAsyncData('home-posts', () =>
   <section id="posts" class="section-gap scroll-mt-28">
     <div class="mb-12 flex items-end justify-between border-b border-primary pb-4">
       <h2 class="text-headline-md text-primary">
-        Posts
+        {{ t('postsSection.heading') }}
       </h2>
       <div class="flex items-center gap-4">
-        <span class="text-label text-secondary">003 // WRITING</span>
+        <span class="text-label text-secondary">{{ t('postsSection.eyebrow') }}</span>
         <NuxtLink
-          to="/posts"
+          :to="localePath('/posts')"
           class="hidden text-label text-primary underline-offset-4 hover:underline sm:inline"
         >
-          View all
+          {{ t('postsSection.viewAll') }}
         </NuxtLink>
       </div>
     </div>
@@ -43,12 +46,12 @@ const { data: posts } = await useAsyncData('home-posts', () =>
       v-else
       class="border border-primary bg-surface-container-lowest p-8 text-body-md text-secondary"
     >
-      New posts will appear here soon.
+      {{ t('postsSection.empty') }}
     </p>
 
     <div class="mt-8 sm:hidden">
-      <UiAppButton to="/posts" variant="secondary" block>
-        VIEW ALL POSTS
+      <UiAppButton :to="localePath('/posts')" variant="secondary" block>
+        {{ t('postsSection.viewAllPosts') }}
       </UiAppButton>
     </div>
   </section>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
 
+const { t } = useI18n()
+
 const open = defineModel<boolean>('open', { required: true })
 
 const dialogRef = ref<HTMLElement | null>(null)
@@ -110,7 +112,7 @@ onBeforeUnmount(() => {
             <button
               type="button"
               class="absolute top-4 right-4 cursor-pointer text-secondary transition-colors hover:text-primary"
-              aria-label="Close"
+              :aria-label="t('success.closeLabel')"
               @click="close"
             >
               <span class="material-symbols-outlined !text-xl">close</span>
@@ -123,7 +125,7 @@ onBeforeUnmount(() => {
                 <span class="material-symbols-outlined !text-xl">mark_email_read</span>
               </span>
               <p class="text-label tracking-widest text-secondary uppercase">
-                Message received
+                {{ t('success.eyebrow') }}
               </p>
             </div>
 
@@ -131,27 +133,25 @@ onBeforeUnmount(() => {
               id="contact-success-title"
               class="mb-4 text-headline-md text-primary"
             >
-              Thank you for reaching out!
+              {{ t('success.title') }}
             </h2>
 
             <div class="space-y-3 text-body-md text-secondary">
-              <p>I've received your message.</p>
+              <p>{{ t('success.body1') }}</p>
               <p>
-                I'll review your request and get back to you by email within
-                24 hours.
+                {{ t('success.body2') }}
               </p>
             </div>
 
             <div class="mt-8 border-t border-outline-variant pt-6">
               <p class="mb-4 text-body-md text-secondary">
-                If your project needs a quicker response, you can also reach me
-                via:
+                {{ t('success.faster') }}
               </p>
 
               <dl class="space-y-3">
                 <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                   <dt class="w-16 shrink-0 text-label text-secondary uppercase">
-                    Email
+                    {{ t('success.email') }}
                   </dt>
                   <dd>
                     <a
@@ -164,7 +164,7 @@ onBeforeUnmount(() => {
                 </div>
                 <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-4">
                   <dt class="w-16 shrink-0 text-label text-secondary uppercase">
-                    Zalo
+                    {{ t('success.zalo') }}
                   </dt>
                   <dd>
                     <a
@@ -182,7 +182,7 @@ onBeforeUnmount(() => {
 
             <div class="mt-8">
               <UiAppButton type="button" block @click="close">
-                CLOSE
+                {{ t('success.close') }}
               </UiAppButton>
             </div>
           </div>

@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { POSTS_PER_PAGE } from '~/utils/posts'
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
 const props = defineProps<{
   page: number
   total: number
@@ -12,9 +15,9 @@ const totalPages = computed(() =>
 )
 
 const pageLink = (page: number) => {
-  const path = props.basePath || '/posts'
-  if (page <= 1) return path
-  return { path, query: { page: String(page) } }
+  const base = props.basePath || '/posts'
+  if (page <= 1) return localePath(base)
+  return localePath({ path: base, query: { page: String(page) } })
 }
 </script>
 
@@ -22,19 +25,19 @@ const pageLink = (page: number) => {
   <nav
     v-if="totalPages > 1"
     class="mt-12 flex items-center justify-between border-t border-primary pt-6"
-    aria-label="Posts pagination"
+    :aria-label="t('posts.paginationLabel')"
   >
     <NuxtLink
       v-if="page > 1"
       :to="pageLink(page - 1)"
       class="text-label text-primary underline-offset-4 hover:underline"
     >
-      ← Previous
+      ← {{ t('posts.previous') }}
     </NuxtLink>
-    <span v-else class="text-label text-outline">← Previous</span>
+    <span v-else class="text-label text-outline">← {{ t('posts.previous') }}</span>
 
     <p class="text-label text-secondary">
-      Page {{ page }} / {{ totalPages }}
+      {{ t('posts.page', { page, total: totalPages }) }}
     </p>
 
     <NuxtLink
@@ -42,8 +45,8 @@ const pageLink = (page: number) => {
       :to="pageLink(page + 1)"
       class="text-label text-primary underline-offset-4 hover:underline"
     >
-      Next →
+      {{ t('posts.next') }} →
     </NuxtLink>
-    <span v-else class="text-label text-outline">Next →</span>
+    <span v-else class="text-label text-outline">{{ t('posts.next') }} →</span>
   </nav>
 </template>

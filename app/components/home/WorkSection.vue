@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { projects } from '~/data/projects'
+
+const { t } = useI18n()
 </script>
 
 <template>
   <section id="work" class="section-gap scroll-mt-28">
     <div class="mb-12 flex items-end justify-between border-b border-primary pb-4">
       <h2 class="text-headline-md text-primary">
-        Selected Works
+        {{ t('work.heading') }}
       </h2>
-      <span class="text-label text-secondary">001 // WORK</span>
+      <span class="text-label text-secondary">{{ t('work.eyebrow') }}</span>
     </div>
 
     <p class="mb-12 max-w-2xl text-body-lg text-secondary">
-      Selected work including this portfolio, Sm-WorkOS, Projenti, and TryHSK —
-      focused on scalable frontend architecture, real-time UX, and clean
-      delivery.
+      {{ t('work.description') }}
     </p>
 
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-gutter">

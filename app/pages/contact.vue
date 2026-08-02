@@ -1,5 +1,7 @@
 <script setup lang="ts">
-await navigateTo({ path: '/', hash: '#contact' }, { replace: true })
+const localePath = useLocalePath()
+
+await navigateTo(localePath({ path: '/', hash: '#contact' }), { replace: true })
 </script>
 
 <template>

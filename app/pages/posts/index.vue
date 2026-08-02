@@ -5,6 +5,8 @@ import {
   parsePostsPage
 } from '~/utils/posts'
 
+const { t } = useI18n()
+const localePath = useLocalePath()
 const route = useRoute()
 const page = computed(() => parsePostsPage(route.query.page))
 
@@ -33,15 +35,14 @@ watchEffect(() => {
   if (!data.value) return
   const totalPages = Math.max(1, Math.ceil(data.value.total / POSTS_PER_PAGE))
   if (page.value > totalPages) {
-    navigateTo(totalPages <= 1 ? '/posts' : `/posts?page=${totalPages}`)
+    navigateTo(totalPages <= 1 ? localePath('/posts') : localePath({ path: '/posts', query: { page: String(totalPages) } }))
   }
 })
 
 useSiteSeo({
-  title: `Posts — ${siteConfig.name}`,
-  description:
-    'Daily notes on frontend craft, Nuxt architecture, and shipping precise interfaces.',
-  path: '/posts'
+  title: `${t('posts.title')} — ${siteConfig.name}`,
+  description: t('posts.description'),
+  path: localePath('/posts')
 })
 </script>
 
@@ -49,14 +50,13 @@ useSiteSeo({
   <div>
     <header class="mb-16 md:mb-24">
       <p class="mb-4 text-label tracking-widest text-secondary uppercase">
-        Writing
+        {{ t('posts.eyebrow') }}
       </p>
       <h1 class="mb-6 text-headline-xl uppercase">
-        Posts
+        {{ t('posts.title') }}
       </h1>
       <p class="max-w-2xl text-body-lg text-secondary">
-        Daily writing on frontend engineering, product delivery, and the craft
-        behind clean interfaces. New entries land here as the archive grows.
+        {{ t('posts.description') }}
       </p>
     </header>
 
@@ -75,7 +75,7 @@ useSiteSeo({
       v-else
       class="border border-primary bg-surface-container-lowest p-8 text-body-md text-secondary"
     >
-      No published posts yet.
+      {{ t('posts.empty') }}
     </p>
 
     <PostsPostPagination

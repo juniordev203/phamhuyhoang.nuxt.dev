@@ -3,19 +3,26 @@ import { siteConfig } from '~/data/site'
 import { resolveNavRoute } from '~/utils/nav'
 
 const route = useRoute()
+const { t } = useI18n()
+const localePath = useLocalePath()
 const mobileOpen = ref(false)
 const menuButton = ref<HTMLButtonElement | null>(null)
 
+const navTo = (to: string) => localePath(resolveNavRoute(to))
+
 const isActive = (to: string) => {
+  const root = localePath('/')
+  const postsPath = localePath('/posts')
+
   if (to === '/#posts') {
     return (
-      route.path.startsWith('/posts')
-      || (route.path === '/' && route.hash === '#posts')
+      route.path.startsWith(postsPath)
+      || (route.path === root && route.hash === '#posts')
     )
   }
 
   if (to.startsWith('/#')) {
-    return route.path === '/' && route.hash === to.slice(1)
+    return route.path === root && route.hash === to.slice(1)
   }
 
   return route.path === to
@@ -54,7 +61,7 @@ onBeforeUnmount(() => {
   >
     <div class="container-site flex items-center justify-between py-4">
       <NuxtLink
-        to="/"
+        :to="localePath('/')"
         class="text-headline-md font-bold tracking-tighter text-primary"
       >
         {{ siteConfig.name }}
@@ -62,12 +69,12 @@ onBeforeUnmount(() => {
 
       <nav
         class="hidden items-center gap-8 md:flex"
-        aria-label="Primary"
+        :aria-label="t('a11y.primaryNav')"
       >
         <NuxtLink
           v-for="item in siteConfig.nav"
           :key="item.to"
-          :to="resolveNavRoute(item.to)"
+          :to="navTo(item.to)"
           :class="[
             'cursor-pointer text-label transition-all duration-200 active:opacity-70',
             isActive(item.to)
@@ -75,11 +82,12 @@ onBeforeUnmount(() => {
               : 'text-secondary hover:text-primary hover:line-through'
           ]"
         >
-          {{ item.label }}
+          {{ t(`nav.${item.key}`) }}
         </NuxtLink>
       </nav>
 
-      <div class="hidden md:block">
+      <div class="hidden items-center gap-4 md:flex">
+        <LayoutLocaleSwitcher />
         <LayoutThemeToggle />
       </div>
 
@@ -87,7 +95,7 @@ onBeforeUnmount(() => {
         ref="menuButton"
         type="button"
         class="cursor-pointer text-primary md:hidden"
-        aria-label="Toggle menu"
+        :aria-label="t('a11y.toggleMenu')"
         aria-controls="mobile-nav"
         :aria-expanded="mobileOpen"
         @click="mobileOpen = !mobileOpen"
@@ -106,12 +114,13 @@ onBeforeUnmount(() => {
       <NuxtLink
         v-for="item in siteConfig.nav"
         :key="item.to"
-        :to="resolveNavRoute(item.to)"
+        :to="navTo(item.to)"
         class="text-label text-primary"
       >
-        {{ item.label }}
+        {{ t(`nav.${item.key}`) }}
       </NuxtLink>
-      <div>
+      <div class="flex gap-4">
+        <LayoutLocaleSwitcher />
         <LayoutThemeToggle />
       </div>
     </div>

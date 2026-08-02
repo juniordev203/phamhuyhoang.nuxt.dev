@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { CONTACT_MIN_ELAPSED_MS, contactSchema } from '#shared/contact'
 
+const { t } = useI18n()
 const toast = useToast()
 
 const form = reactive({
@@ -30,10 +31,10 @@ const onSubmit = async () => {
       parsed.error.flatten().fieldErrors.name?.[0]
       || parsed.error.flatten().fieldErrors.email?.[0]
       || parsed.error.flatten().fieldErrors.message?.[0]
-      || 'Invalid form data'
+      || t('form.invalidDescription')
 
     toast.add({
-      title: 'Check your form',
+      title: t('form.invalidTitle'),
       description: first,
       color: 'error',
       icon: 'i-lucide-circle-alert'
@@ -44,8 +45,8 @@ const onSubmit = async () => {
   // Client-side time-trap mirror (server still enforces).
   if (Date.now() - startedAt < CONTACT_MIN_ELAPSED_MS) {
     toast.add({
-      title: 'Please wait a moment',
-      description: 'Take a second before sending your message.',
+      title: t('form.waitTitle'),
+      description: t('form.waitDescription'),
       color: 'warning',
       icon: 'i-lucide-circle-alert'
     })
@@ -67,8 +68,8 @@ const onSubmit = async () => {
     successOpen.value = true
   } catch {
     toast.add({
-      title: 'Failed to send message',
-      description: 'Please try submitting again.',
+      title: t('form.failTitle'),
+      description: t('form.failDescription'),
       color: 'error',
       icon: 'i-lucide-circle-alert'
     })
@@ -88,7 +89,7 @@ const onSubmit = async () => {
       class="absolute left-[-9999px] h-0 w-0 overflow-hidden"
       aria-hidden="true"
     >
-      <label for="website">Website</label>
+      <label for="website">{{ t('form.websiteLabel') }}</label>
       <input
         id="website"
         v-model="form.website"
@@ -101,13 +102,13 @@ const onSubmit = async () => {
 
     <div class="mb-8 grid grid-cols-1 gap-8 md:grid-cols-2">
       <div class="flex flex-col">
-        <label for="name" class="mb-2 text-label text-primary">Name</label>
+        <label for="name" class="mb-2 text-label text-primary">{{ t('form.name') }}</label>
         <input
           id="name"
           v-model="form.name"
           type="text"
           name="name"
-          placeholder="Your name"
+          :placeholder="t('form.namePlaceholder')"
           required
           maxlength="100"
           autocomplete="name"
@@ -116,13 +117,13 @@ const onSubmit = async () => {
         >
       </div>
       <div class="flex flex-col">
-        <label for="email" class="mb-2 text-label text-primary">Email</label>
+        <label for="email" class="mb-2 text-label text-primary">{{ t('form.email') }}</label>
         <input
           id="email"
           v-model="form.email"
           type="email"
           name="email"
-          placeholder="you@company.com"
+          :placeholder="t('form.emailPlaceholder')"
           required
           maxlength="200"
           autocomplete="email"
@@ -133,13 +134,13 @@ const onSubmit = async () => {
     </div>
 
     <div class="mb-12 flex flex-col">
-      <label for="message" class="mb-2 text-label text-primary">Message</label>
+      <label for="message" class="mb-2 text-label text-primary">{{ t('form.message') }}</label>
       <textarea
         id="message"
         v-model="form.message"
         name="message"
         rows="4"
-        placeholder="Share the role, project idea, or how I can help..."
+        :placeholder="t('form.messagePlaceholder')"
         required
         maxlength="5000"
         :disabled="status === 'loading'"
@@ -148,7 +149,7 @@ const onSubmit = async () => {
     </div>
 
     <UiAppButton type="submit" block :disabled="status === 'loading'">
-      {{ status === 'loading' ? 'SENDING…' : 'SEND MESSAGE' }}
+      {{ status === 'loading' ? t('form.sending') : t('form.send') }}
     </UiAppButton>
   </form>
 

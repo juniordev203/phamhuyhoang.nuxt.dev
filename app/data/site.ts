@@ -2,16 +2,7 @@ export const siteConfig = {
   url: 'https://huyhoangpham.id.vn',
   name: 'ARCHITECT.DEV',
   fullName: 'Pham Huy Hoang',
-  title: 'Frontend Engineer',
-  tagline:
-    'Design-driven engineer focused on building simple, optimized, and clean web experiences.',
-  introduction: [
-    'I am a Front-End Developer with 1.5+ years of hands-on experience specializing in creating high-performance, user-centric web applications with the modern JavaScript ecosystem (Vue 3, Nuxt.js, TypeScript).',
-    'Proven ability to translate complex UI/UX designs into responsive, interactive, and scalable products.',
-    'Eager to contribute to a collaborative team and solve challenging technical problems.'
-  ],
   version: 'v2.4.1',
-  copyright: '© 2026 ARCHITECT.DEV — ENGINEERED FOR PRECISION',
   email: 'huyhoangpham8460@gmail.com',
   phone: '0367 435 069',
   education: {
@@ -41,9 +32,9 @@ export const siteConfig = {
     }
   },
   nav: [
-    { label: 'Work', to: '/#work' },
-    { label: 'Tech', to: '/#tech' },
-    { label: 'Posts', to: '/#posts' },
-    { label: 'Contact', to: '/#contact' }
+    { key: 'work', to: '/#work' },
+    { key: 'tech', to: '/#tech' },
+    { key: 'posts', to: '/#posts' },
+    { key: 'contact', to: '/#contact' }
   ]
 } as const

@@ -4,6 +4,8 @@ import type { SkillGroup } from '~/data/skills'
 defineProps<{
   skill: SkillGroup
 }>()
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -14,7 +16,7 @@ defineProps<{
       {{ skill.icon }}
     </span>
     <h3 class="mb-4 text-label font-bold tracking-widest uppercase">
-      {{ skill.title }}
+      {{ t(`skills.${skill.key}`) }}
     </h3>
     <ul class="space-y-2 text-body-md text-secondary">
       <li v-for="item in skill.items" :key="item">

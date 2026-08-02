@@ -8,11 +8,11 @@ export function parsePostsPage(query: unknown): number {
   return Number.isFinite(page) && page >= 1 ? Math.floor(page) : 1
 }
 
-export function formatPostDate(date: string | Date) {
+export function formatPostDate(date: string | Date, locale: string = 'en') {
   const value = typeof date === 'string' ? new Date(date) : date
   if (Number.isNaN(value.getTime())) return ''
 
-  return new Intl.DateTimeFormat('en-US', {
+  return new Intl.DateTimeFormat(locale === 'vi' ? 'vi-VN' : 'en-US', {
     year: 'numeric',
     month: 'short',
     day: 'numeric'

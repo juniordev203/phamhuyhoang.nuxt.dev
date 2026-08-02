@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { siteConfig } from '~/data/site'
+
+const { t } = useI18n()
 </script>
 
 <template>
@@ -7,14 +9,13 @@ import { siteConfig } from '~/data/site'
     <div class="mx-auto flex w-full max-w-2xl flex-col items-center">
       <div class="mb-16 text-center">
         <p class="mb-4 text-label tracking-widest text-secondary uppercase">
-          004 // Contact
+          {{ t('contact.eyebrow') }}
         </p>
         <h2 class="mb-6 text-headline-xl text-primary">
-          Let's work.
+          {{ t('contact.heading') }}
         </h2>
         <p class="mx-auto max-w-lg text-body-lg text-secondary">
-          Whether you're a recruiter looking for a frontend engineer, or a client
-          ready to build a website or web product — I'd love to hear from you.
+          {{ t('contact.description') }}
         </p>
       </div>
 
@@ -30,7 +31,7 @@ import { siteConfig } from '~/data/site'
           <span
             class="text-label tracking-widest text-secondary uppercase transition-colors group-hover:text-primary"
           >
-            Email
+            {{ t('contact.email') }}
           </span>
           <span class="break-all text-body-md text-primary group-hover:underline">
             {{ siteConfig.email }}
@@ -45,7 +46,7 @@ import { siteConfig } from '~/data/site'
           <span
             class="text-label tracking-widest text-secondary uppercase transition-colors group-hover:text-primary"
           >
-            GitHub
+            {{ t('contact.github') }}
           </span>
           <span class="text-body-md text-primary group-hover:underline">
             {{ siteConfig.social.github.display }}
@@ -58,7 +59,7 @@ import { siteConfig } from '~/data/site'
           <span
             class="text-label tracking-widest text-secondary uppercase transition-colors group-hover:text-primary"
           >
-            Phone
+            {{ t('contact.phone') }}
           </span>
           <span class="text-body-md text-primary group-hover:underline">
             {{ siteConfig.phone }}

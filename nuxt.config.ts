@@ -9,9 +9,26 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/google-fonts',
     '@nuxt/content',
+    '@nuxtjs/i18n',
     '@nuxtjs/sitemap',
     '@vercel/analytics'
   ],
+
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'vi', language: 'vi-VN', name: 'Tiếng Việt', file: 'vi.json' }
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    langDir: 'locales',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root'
+    },
+    vueI18n: 'i18n.config.ts'
+  },
 
   css: ['~/assets/css/main.css'],
 

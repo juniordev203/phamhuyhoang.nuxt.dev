@@ -5,6 +5,20 @@ const props = defineProps<{
   project: Project
 }>()
 
+const { t } = useI18n()
+const localePath = useLocalePath()
+
+const copy = computed(() => ({
+  title: t(`projects.${props.project.slug}.title`),
+  company: t(`projects.${props.project.slug}.company`),
+  role: t(`projects.${props.project.slug}.role`),
+  duration: t(`projects.${props.project.slug}.duration`),
+  summary: t(`projects.${props.project.slug}.summary`),
+  contributions: t(
+    `projects.${props.project.slug}.contributions`
+  ) as unknown as string[]
+}))
+
 const isExternal = computed(() =>
   Boolean(props.project.href?.startsWith('http'))
 )
@@ -23,7 +37,7 @@ const wrapperAttrs = computed(() => {
       rel: 'noopener noreferrer'
     }
   }
-  return { to: props.project.href }
+  return { to: localePath(props.project.href) }
 })
 </script>
 
@@ -44,7 +58,7 @@ const wrapperAttrs = computed(() => {
     >
       <NuxtImg
         :src="project.image"
-        :alt="project.title"
+        :alt="copy.title"
         width="1200"
         height="670"
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
@@ -61,7 +75,7 @@ const wrapperAttrs = computed(() => {
       <div>
         <div class="mb-2 flex items-start justify-between gap-4">
           <h2 class="text-headline-md tracking-tight uppercase">
-            {{ project.title }}
+            {{ copy.title }}
           </h2>
           <span
             v-if="project.href"
@@ -71,16 +85,16 @@ const wrapperAttrs = computed(() => {
           </span>
         </div>
         <p class="mb-1 text-label text-secondary uppercase">
-          {{ project.company }} · {{ project.role }}
+          {{ copy.company }} · {{ copy.role }}
         </p>
         <p class="mb-4 text-label text-outline">
-          {{ project.duration }}
+          {{ copy.duration }}
         </p>
         <p class="mb-4 text-body-md text-secondary">
-          {{ project.summary }}
+          {{ copy.summary }}
         </p>
         <ul class="mb-6 list-disc space-y-2 pl-5 text-body-md text-secondary">
-          <li v-for="(item, index) in project.contributions" :key="index">
+          <li v-for="(item, index) in copy.contributions" :key="index">
             {{ item }}
           </li>
         </ul>
@@ -96,16 +110,16 @@ const wrapperAttrs = computed(() => {
     >
       <div class="max-w-2xl">
         <p class="mb-2 text-label text-secondary uppercase">
-          {{ project.company }} · {{ project.role }} · {{ project.duration }}
+          {{ copy.company }} · {{ copy.role }} · {{ copy.duration }}
         </p>
         <h2 class="mb-2 text-headline-lg tracking-tight uppercase">
-          {{ project.title }}
+          {{ copy.title }}
         </h2>
         <p class="mb-4 text-body-lg text-secondary">
-          {{ project.summary }}
+          {{ copy.summary }}
         </p>
         <ul class="list-disc space-y-2 pl-5 text-body-md text-secondary">
-          <li v-for="(item, index) in project.contributions" :key="index">
+          <li v-for="(item, index) in copy.contributions" :key="index">
             {{ item }}
           </li>
         </ul>

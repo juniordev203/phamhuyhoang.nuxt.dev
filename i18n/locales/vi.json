@@ -1,0 +1,156 @@
+{
+  "site": {
+    "title": "Kỹ sư Frontend",
+    "tagline": "Kỹ sư định hướng thiết kế, tập trung xây dựng những trải nghiệm web đơn giản, tối ưu và sạch sẽ.",
+    "introduction": [
+      "Tôi là Lập trình viên Front-End với hơn 1,5 năm kinh nghiệm thực chiến, chuyên tạo ra các ứng dụng web hiệu năng cao, lấy người dùng làm trung tâm với hệ sinh thái JavaScript hiện đại (Vue 3, Nuxt.js, TypeScript).",
+      "Khả năng đã được chứng minh trong việc chuyển hóa các thiết kế UI/UX phức tạp thành những sản phẩm responsive, tương tác và dễ mở rộng.",
+      "Luôn sẵn sàng đóng góp cho một đội ngũ hợp tác chặt chẽ và giải quyết những vấn đề kỹ thuật đầy thách thức."
+    ],
+    "copyright": "© 2026 ARCHITECT.DEV — CHẾ TÁC VÌ SỰ CHÍNH XÁC"
+  },
+  "nav": {
+    "work": "Dự án",
+    "tech": "Công nghệ",
+    "posts": "Bài viết",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "viewProjects": "Xem dự án",
+    "getInTouch": "Liên hệ ngay",
+    "imageAlt": "Ảnh kiến trúc tối giản với những đường cắt sắc nét giao nhau"
+  },
+  "work": {
+    "eyebrow": "001 // DỰ ÁN",
+    "heading": "Dự án tiêu biểu",
+    "description": "Các dự án tiêu biểu bao gồm portfolio này, Sm-WorkOS, Projenti và TryHSK — tập trung vào kiến trúc frontend mở rộng, trải nghiệm real-time và chất lượng bàn giao sạch."
+  },
+  "tech": {
+    "eyebrow": "002 // CÔNG NGHỆ",
+    "heading": "Kho vũ khí kỹ thuật"
+  },
+  "skills": {
+    "primaryStack": "Stack chính",
+    "ecosystem": "Hệ sinh thái",
+    "uiLibraries": "Thư viện UI",
+    "tools": "Công cụ"
+  },
+  "postsSection": {
+    "eyebrow": "003 // VIẾT",
+    "heading": "Bài viết",
+    "viewAll": "Xem tất cả",
+    "viewAllPosts": "XEM TẤT CẢ BÀI VIẾT",
+    "empty": "Bài viết mới sẽ xuất hiện tại đây."
+  },
+  "posts": {
+    "eyebrow": "Viết",
+    "title": "Bài viết",
+    "description": "Viết mỗi ngày về kỹ thuật frontend, giao nhận sản phẩm và sự tinh tế đằng sau những giao diện sạch sẽ. Các bài viết mới sẽ cập nhật dần theo thời gian.",
+    "empty": "Chưa có bài viết nào được xuất bản.",
+    "read": "Đọc",
+    "allPosts": "Tất cả bài viết",
+    "previous": "Bài trước",
+    "next": "Bài sau",
+    "page": "Trang {page} / {total}",
+    "paginationLabel": "Phân trang bài viết",
+    "adjacentLabel": "Bài viết liền kề",
+    "notFound": "Không tìm thấy bài viết"
+  },
+  "contact": {
+    "eyebrow": "004 // LIÊN HỆ",
+    "heading": "Hãy làm việc cùng tôi.",
+    "description": "Dù bạn là nhà tuyển dụng tìm kiếm kỹ sư frontend, hay khách hàng muốn xây dựng website hoặc sản phẩm web — tôi rất mong được lắng nghe bạn.",
+    "email": "Email",
+    "github": "GitHub",
+    "phone": "Điện thoại"
+  },
+  "form": {
+    "name": "Họ tên",
+    "namePlaceholder": "Tên của bạn",
+    "email": "Email",
+    "emailPlaceholder": "ban{'@'}congty.com",
+    "message": "Nội dung",
+    "messagePlaceholder": "Chia sẻ vị trí công việc, ý tưởng dự án, hoặc tôi có thể giúp gì...",
+    "send": "GỬI TIN NHẮN",
+    "sending": "ĐANG GỬI…",
+    "websiteLabel": "Website",
+    "invalidTitle": "Kiểm tra lại biểu mẫu",
+    "invalidDescription": "Dữ liệu biểu mẫu không hợp lệ",
+    "waitTitle": "Vui lòng chờ một chút",
+    "waitDescription": "Hãy chờ một giây trước khi gửi tin nhắn.",
+    "failTitle": "Gửi tin nhắn thất bại",
+    "failDescription": "Vui lòng thử gửi lại."
+  },
+  "success": {
+    "eyebrow": "Đã nhận tin nhắn",
+    "title": "Cảm ơn bạn đã liên hệ!",
+    "body1": "Tôi đã nhận được tin nhắn của bạn.",
+    "body2": "Tôi sẽ xem xét yêu cầu và phản hồi qua email trong vòng 24 giờ.",
+    "faster": "Nếu dự án cần phản hồi nhanh hơn, bạn có thể liên hệ tôi qua:",
+    "email": "Email",
+    "zalo": "Zalo",
+    "close": "ĐÓNG",
+    "closeLabel": "Đóng"
+  },
+  "theme": {
+    "light": "Sáng",
+    "dark": "Tối",
+    "switchLight": "Chuyển sang chế độ sáng",
+    "switchDark": "Chuyển sang chế độ tối"
+  },
+  "a11y": {
+    "skipToContent": "Bỏ qua nội dung",
+    "toggleMenu": "Chuyển menu",
+    "primaryNav": "Chính"
+  },
+  "lang": {
+    "label": "Ngôn ngữ",
+    "switchTo": "Chuyển đổi ngôn ngữ"
+  },
+  "projects": {
+    "architect-dev": {
+      "title": "ARCHITECT.DEV",
+      "company": "Cá nhân",
+      "role": "Kỹ sư Frontend",
+      "duration": "2026",
+      "summary": "Portfolio tối giản được xây dựng bằng Nuxt 4 — hệ thống lưới đơn sắc, kiểu chữ sắc nét và thẩm mỹ lấy mã nguồn làm trung tâm, lấy cảm hứng từ thiết kế Thụy Sĩ.",
+      "contributions": [
+        "Thiết kế và triển khai toàn bộ hệ thống UI từ Stitch: design tokens, lưới bố cục và các component tái sử dụng.",
+        "Cấu trúc nội dung quanh kinh nghiệm làm việc thực tế với stack Nuxt + Tailwind tối ưu hiệu năng."
+      ]
+    },
+    "sm-workos": {
+      "title": "Sm-WorkOS",
+      "company": "Outsource-team",
+      "role": "Teamlead Front-End",
+      "duration": "T6/2025 – T12/2025",
+      "summary": "Mô-đun quản lý công việc có thể tùy chỉnh với loại tác vụ động, trường tùy biến và quy trình làm việc tự động cho các quy trình nội bộ.",
+      "contributions": [
+        "Xây dựng engine biểu mẫu & quy trình làm việc động với UI kéo-thả, trường tùy biến và luật xác thực cho quản trị viên.",
+        "Phát triển bảng Kanban real-time với WebSocket + UI lạc quan, bao gồm xác thực để ngăn chuyển trạng thái không hợp lệ."
+      ]
+    },
+    "projenti": {
+      "title": "Projenti",
+      "company": "CDTM-Company",
+      "role": "Lập trình viên Frontend",
+      "duration": "T9/2024 – T10/2025",
+      "summary": "Nền tảng quản lý dự án tất-trong-một cho các đội ngũ phần mềm — theo dõi tiến độ Agile và giám sát máy chủ thời gian thực.",
+      "contributions": [
+        "Triển khai auth an toàn và RBAC với Next Auth, cùng bảng quản trị cho người dùng, phân trang và phân quyền.",
+        "Xây dựng hệ thống Kanban kéo-thả với optimistic updates và xử lý rollback."
+      ]
+    },
+    "tryhsk": {
+      "title": "TryHSK",
+      "company": "Thiên Hà Xanh",
+      "role": "Thực tập sinh Frontend",
+      "duration": "T7/2024 – T8/2024",
+      "summary": "Nền tảng luyện thi HSK hàng đầu Việt Nam với bài thi thử từ HSK 1 đến HSK 6.",
+      "contributions": [
+        "Phát triển các component UI cho trang câu hỏi và tích hợp RESTful API cho các bộ câu hỏi động.",
+        "Tối ưu xử lý dữ liệu để tải trang nhanh hơn trong các luồng luyện tập."
+      ]
+    }
+  }
+}
