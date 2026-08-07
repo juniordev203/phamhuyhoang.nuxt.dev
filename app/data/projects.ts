@@ -31,10 +31,25 @@ export const projects: Project[] = [
     href: '/'
   },
   {
+    slug: 'kaopiz',
+    title: 'Kaopiz',
+    company: 'Kaopiz',
+    role: 'Half-Stack Developer',
+    duration: 'Dec 2025 – Present',
+    summary:
+      'Developing web applications as a half-stack developer — Vue on the frontend and Java Spring on the backend.',
+    contributions: [
+      'Building and maintaining frontend interfaces with Vue across client projects.',
+      'Implementing backend services and APIs with Java Spring.'
+    ],
+    tags: ['Vue.js', 'Java', 'Spring Boot'],
+    image: ''
+  },
+  {
     slug: 'sm-workos',
     title: 'Sm-WorkOS',
     company: 'Outsource-team',
-    role: 'Teamlead Front-End',
+    role: 'Frontend Developer',
     duration: 'Jun 2025 – Dec 2025',
     summary:
       'Customizable task management module with dynamic task types, custom fields, and automated workflows for internal processes.',
