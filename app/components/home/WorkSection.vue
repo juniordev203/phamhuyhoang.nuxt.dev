@@ -31,25 +31,30 @@ const workProjects = computed(() =>
       :project="featuredProject"
     />
 
-    <ul class="mt-12 border-t border-primary">
+    <ol class="mt-12 md:mt-16">
       <li
-        v-for="project in workProjects"
+        v-for="(project, index) in workProjects"
         :key="project.slug"
-        class="grid grid-cols-1 gap-1 border-b border-primary py-4 md:grid-cols-[minmax(0,2fr)_minmax(0,1.2fr)_minmax(0,1.6fr)_minmax(0,1fr)] md:items-baseline md:gap-gutter"
+        class="group grid grid-cols-1 gap-2 py-6 md:grid-cols-12 md:items-baseline md:gap-6 md:py-8"
       >
-        <span class="text-body-md font-medium uppercase tracking-tight text-primary">
+        <span class="text-label text-outline md:col-span-1">
+          {{ String(index + 1).padStart(2, '0') }}
+        </span>
+        <h3
+          class="text-headline-md uppercase tracking-tight text-primary transition-transform duration-200 group-hover:translate-x-1 md:col-span-5"
+        >
           {{ project.title }}
-        </span>
-        <span class="text-body-md text-secondary">
+        </h3>
+        <p class="text-body-md text-secondary md:col-span-2">
           {{ project.role }}
-        </span>
-        <span class="text-body-md text-secondary">
+        </p>
+        <p class="text-label text-outline md:col-span-2">
           {{ project.tags.join(', ') }}
-        </span>
-        <span class="text-label text-outline">
+        </p>
+        <p class="text-label text-outline md:col-span-2 md:text-right">
           {{ project.duration }}
-        </span>
+        </p>
       </li>
-    </ul>
+    </ol>
   </section>
 </template>
